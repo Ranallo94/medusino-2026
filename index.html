@@ -433,7 +433,6 @@
 
     const firebaseConfig = IS_LOCAL ? firebaseConfigLocal : firebaseConfigProd;
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
 
     const auth      = initializeAuth(app, { persistence: browserSessionPersistence });
     const db        = getFirestore(app);
