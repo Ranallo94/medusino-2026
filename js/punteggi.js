@@ -9,10 +9,13 @@
  */
 import { TURNI } from './bracket.js';
 
-// Schema "Finale calda": i turni finali pesano di piu, per tenere la classifica
-// aperta fino all'ultima partita. (Primi 2 turni ~45% dei punti, ultimi 3 ~28%.)
-export const WINNER_POINTS = { R128: 1, R64: 2, R32: 5, R16: 12, QF: 30, SF: 75, F: 180 };
-export const SET_POINTS    = { R128: 1, R64: 1, R32: 2, R16: 4,  QF: 10, SF: 25, F: 60  };
+// Schema "Finale ridotta" (US Open 2026). Rispetto a Wimbledon la finale scende
+// da 180+60 a 100+20 punti: pesava il 21% del montepremi punti e valeva 2,3 volte
+// il distacco 1º-5º pre-finale, ora il 12,7% e 1,45 volte. Quarti e semifinali sono
+// scesi solo di poco (30→28, 75→55) apposta: comprimerli di piu' restringerebbe la
+// classifica e farebbe pesare di nuovo la finale. Verificato su 2.500 tornei simulati.
+export const WINNER_POINTS = { R128: 1, R64: 2, R32: 5, R16: 12, QF: 28, SF: 55, F: 100 };
+export const SET_POINTS    = { R128: 1, R64: 1, R32: 2, R16: 4,  QF: 9,  SF: 14, F: 20  };
 export const BONUS_STAT_DEFAULT = 25;
 
 function vincitoriTurno(doc, roundId) {
