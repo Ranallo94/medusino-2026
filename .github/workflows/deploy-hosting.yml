@@ -1,0 +1,35 @@
+name: Deploy Hosting
+
+# Push su main → il sito pubblico si aggiorna da solo.
+# Ignora le modifiche che riguardano solo le Functions.
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'functions/**'
+      - '**.md'
+  workflow_dispatch:   # trigger manuale da GitHub → Actions → Run workflow
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Write service account credentials
+        run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > /tmp/sa.json
+
+      - name: Deploy Hosting
+        run: firebase deploy --only hosting --project medusino-2026 --non-interactive
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/sa.json
