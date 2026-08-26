@@ -422,16 +422,18 @@
     // Firebase Console → ⚙️ Impostazioni progetto → Le tue app → App web → Configurazione SDK.
     // Vedi SETUP_MEDUSINO.md, passo 3.
     const firebaseConfigProd = {
-      apiKey:            "INCOLLA_QUI_LA_API_KEY",
+      apiKey:            "AIzaSyByVEsNIWdxIRTkz1uVC_5e5NhZnnvH2uk",
       authDomain:        "medusino-2026.firebaseapp.com",
       projectId:         "medusino-2026",
       storageBucket:     "medusino-2026.firebasestorage.app",
-      messagingSenderId: "INCOLLA_QUI_IL_SENDER_ID",
-      appId:             "INCOLLA_QUI_L_APP_ID"
+      messagingSenderId: "683190839197",
+      appId:             "1:683190839197:web:d4bd29beda2f08b7873174",
+      measurementId: "G-71ZN7L858P"
     };
 
     const firebaseConfig = IS_LOCAL ? firebaseConfigLocal : firebaseConfigProd;
     const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
 
     const auth      = initializeAuth(app, { persistence: browserSessionPersistence });
     const db        = getFirestore(app);
