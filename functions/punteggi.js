@@ -52,7 +52,7 @@ function getMatchPlayers(roundId, index, doc, db) {
 // Schema "Finale calda" (allineato a js/punteggi.js): turni finali piu pesanti.
 const WINNER_POINTS = { R128: 1, R64: 2, R32: 5, R16: 12, QF: 28, SF: 55, F: 100 };
 const SET_POINTS    = { R128: 1, R64: 1, R32: 2, R16: 4,  QF: 9,  SF: 14, F: 20  };
-const BONUS_STAT_DEFAULT = 25;
+const BONUS_STAT_DEFAULT = 15;
 
 function vincitoriTurno(doc, roundId) {
   const out = {};
