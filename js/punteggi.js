@@ -14,9 +14,12 @@ import { TURNI } from './bracket.js';
 // il distacco 1º-5º pre-finale, ora il 12,7% e 1,45 volte. Quarti e semifinali sono
 // scesi solo di poco (30→28, 75→55) apposta: comprimerli di piu' restringerebbe la
 // classifica e farebbe pesare di nuovo la finale. Verificato su 2.500 tornei simulati.
+// I bonus statistici scendono da 25 a 15 punti l'uno: a 25 ribaltavano da soli il
+// vincitore nel 13,5% dei tornei, a 15 nell'8%. Un bonus vale comunque piu' del bonus
+// set di un quarto di finale, quindi resta un premio per cui vale la pena ragionarci.
 export const WINNER_POINTS = { R128: 1, R64: 2, R32: 5, R16: 12, QF: 28, SF: 55, F: 100 };
 export const SET_POINTS    = { R128: 1, R64: 1, R32: 2, R16: 4,  QF: 9,  SF: 14, F: 20  };
-export const BONUS_STAT_DEFAULT = 25;
+export const BONUS_STAT_DEFAULT = 15;
 
 function vincitoriTurno(doc, roundId) {
   const out = {};
