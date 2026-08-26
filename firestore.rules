@@ -1,0 +1,87 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuth() &&
+        get(/databases/$(database)/documents/partecipanti/$(request.auth.uid)).data.isAdmin == true;
+    }
+
+    function isApprovato() {
+      let d = get(/databases/$(database)/documents/partecipanti/$(request.auth.uid)).data;
+      return isAuth() && d.approvato == true && d.get('disabilitato', false) != true;
+    }
+
+    // ── PARTECIPANTI ──────────────────────────────────
+    match /partecipanti/{uid} {
+      // Lettura: ognuno può leggere il proprio profilo (serve per controllare approvato);
+      //          gli admin leggono tutti.
+      allow read: if isAuth() && (request.auth.uid == uid || isAdmin());
+
+      // Creazione: un utente autenticato può creare SOLO il proprio documento,
+      //            con approvato: false obbligatorio (non può auto-approvarsi).
+      allow create: if isAuth()
+        && request.auth.uid == uid
+        && request.resource.data.approvato == false
+        && request.resource.data.isAdmin == false;
+
+      // Aggiornamento: solo admin possono modificare (approvazione, correzioni).
+      // Un utente con isOwner:true può essere modificato SOLO da se stesso,
+      // così nessun altro admin può revocargli i privilegi.
+      allow update: if isAdmin() && (
+        !resource.data.get('isOwner', false) ||
+        request.auth.uid == uid
+      );
+
+      // Cancellazione: solo admin (rifiuto richieste).
+      allow delete: if isAdmin();
+    }
+
+    // ── PRONOSTICI ────────────────────────────────────
+    // Tutti gli approvati possono leggere (per vedere le schede altrui dalla classifica).
+    // Il proprietario può scrivere la propria scheda SOLO a pronostici aperti
+    // (sistema/config.pronostici_aperti). Gli admin possono sempre scrivere
+    // (correzioni manuali a torneo in corso).
+    // Allineata al frontend (cfg?.pronostici_aperti !== false): se il documento
+    // di config o il campo mancano, i pronostici sono APERTI. Vengono chiusi solo
+    // quando l'admin imposta esplicitamente pronostici_aperti == false.
+    function pronosticiAperti() {
+      return !exists(/databases/$(database)/documents/sistema/config) ||
+        get(/databases/$(database)/documents/sistema/config).data.get('pronostici_aperti', true) == true;
+    }
+    match /pronostici/{uid} {
+      allow read:  if isApprovato();
+      allow write: if (isApprovato() && request.auth.uid == uid && pronosticiAperti()) || isAdmin();
+    }
+
+    // ── RISULTATI ─────────────────────────────────────
+    match /risultati/{doc} {
+      allow read: if isApprovato();
+      allow write: if isAdmin(); // Admin può scrivere (sync API + simulazioni manuali)
+    }
+
+    // ── CLASSIFICA ────────────────────────────────────
+    match /classifica/{doc} {
+      allow read: if isApprovato();
+      allow write: if isAdmin(); // Cloud Function + ricalcolo manuale admin
+    }
+
+    // ── LIVE ──────────────────────────────────────────
+    match /live/{doc} {
+      allow read: if isApprovato();
+      // Admin può scrivere (form marcatori manuale); la Cloud Function usa
+      // l'Admin SDK e bypassa comunque le regole.
+      allow write: if isAdmin();
+    }
+
+    // ── SISTEMA / CONFIG ──────────────────────────────
+    match /sistema/{doc} {
+      allow read:  if isAuth(); // anche non approvati (serve per sapere se pronostici aperti)
+      allow write: if isAdmin();
+    }
+  }
+}

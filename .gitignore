@@ -1,0 +1,22 @@
+# Credenziali Firebase Admin (non pushare mai)
+serviceAccount*.json
+*-service-account.json
+sa.json
+
+# Script admin locali (non vanno in produzione)
+reset-password.js
+set-owner.js
+seed.js
+simula-giornata1.js
+reset-risultati.js
+reset-eliminatorie.js
+ricalcola-classifica.js
+esporta-pronostici.js
+
+# Node
+node_modules/
+functions/node_modules/
+
+# Misc
+.DS_Store
+*.log

@@ -1,0 +1,1670 @@
+{
+  "evento": "US Open 2026",
+  "tabellone": "Singolare maschile",
+  "bestOf": 5,
+  "setWin": 3,
+  "setOptions": [
+    "3-0",
+    "3-1",
+    "3-2"
+  ],
+  "turni": [
+    {
+      "id": "R128",
+      "nome": "1º turno",
+      "matches": 64
+    },
+    {
+      "id": "R64",
+      "nome": "2º turno",
+      "matches": 32
+    },
+    {
+      "id": "R32",
+      "nome": "3º turno",
+      "matches": 16
+    },
+    {
+      "id": "R16",
+      "nome": "Ottavi",
+      "matches": 8
+    },
+    {
+      "id": "QF",
+      "nome": "Quarti",
+      "matches": 4
+    },
+    {
+      "id": "SF",
+      "nome": "Semifinali",
+      "matches": 2
+    },
+    {
+      "id": "F",
+      "nome": "Finale",
+      "matches": 1
+    }
+  ],
+  "giocatori": {
+    "p001": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p002": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p003": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p004": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p005": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p006": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p007": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p008": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p009": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p010": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p011": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p012": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p013": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p014": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p015": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p016": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p017": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p018": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p019": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p020": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p021": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p022": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p023": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p024": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p025": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p026": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p027": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p028": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p029": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p030": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p031": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p032": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p033": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p034": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p035": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p036": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p037": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p038": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p039": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p040": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p041": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p042": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p043": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p044": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p045": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p046": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p047": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p048": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p049": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p050": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p051": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p052": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p053": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p054": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p055": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p056": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p057": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p058": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p059": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p060": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p061": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p062": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p063": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p064": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p065": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p066": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p067": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p068": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p069": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p070": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p071": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p072": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p073": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p074": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p075": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p076": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p077": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p078": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p079": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p080": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p081": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p082": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p083": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p084": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p085": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p086": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p087": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p088": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p089": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p090": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p091": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p092": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p093": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p094": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p095": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p096": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p097": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p098": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p099": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p100": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p101": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p102": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p103": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p104": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p105": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p106": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p107": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p108": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p109": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p110": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p111": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p112": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p113": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p114": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p115": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p116": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p117": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p118": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p119": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p120": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p121": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p122": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p123": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p124": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p125": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p126": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p127": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    },
+    "p128": {
+      "nome": "",
+      "seed": null,
+      "naz": "",
+      "rank": null,
+      "prevRank": null,
+      "points": null,
+      "trend": null,
+      "espnId": ""
+    }
+  },
+  "draw_R128": [
+    {
+      "id": "R128_01",
+      "slotA": "p001",
+      "slotB": "p002"
+    },
+    {
+      "id": "R128_02",
+      "slotA": "p003",
+      "slotB": "p004"
+    },
+    {
+      "id": "R128_03",
+      "slotA": "p005",
+      "slotB": "p006"
+    },
+    {
+      "id": "R128_04",
+      "slotA": "p007",
+      "slotB": "p008"
+    },
+    {
+      "id": "R128_05",
+      "slotA": "p009",
+      "slotB": "p010"
+    },
+    {
+      "id": "R128_06",
+      "slotA": "p011",
+      "slotB": "p012"
+    },
+    {
+      "id": "R128_07",
+      "slotA": "p013",
+      "slotB": "p014"
+    },
+    {
+      "id": "R128_08",
+      "slotA": "p015",
+      "slotB": "p016"
+    },
+    {
+      "id": "R128_09",
+      "slotA": "p017",
+      "slotB": "p018"
+    },
+    {
+      "id": "R128_10",
+      "slotA": "p019",
+      "slotB": "p020"
+    },
+    {
+      "id": "R128_11",
+      "slotA": "p021",
+      "slotB": "p022"
+    },
+    {
+      "id": "R128_12",
+      "slotA": "p023",
+      "slotB": "p024"
+    },
+    {
+      "id": "R128_13",
+      "slotA": "p025",
+      "slotB": "p026"
+    },
+    {
+      "id": "R128_14",
+      "slotA": "p027",
+      "slotB": "p028"
+    },
+    {
+      "id": "R128_15",
+      "slotA": "p029",
+      "slotB": "p030"
+    },
+    {
+      "id": "R128_16",
+      "slotA": "p031",
+      "slotB": "p032"
+    },
+    {
+      "id": "R128_17",
+      "slotA": "p033",
+      "slotB": "p034"
+    },
+    {
+      "id": "R128_18",
+      "slotA": "p035",
+      "slotB": "p036"
+    },
+    {
+      "id": "R128_19",
+      "slotA": "p037",
+      "slotB": "p038"
+    },
+    {
+      "id": "R128_20",
+      "slotA": "p039",
+      "slotB": "p040"
+    },
+    {
+      "id": "R128_21",
+      "slotA": "p041",
+      "slotB": "p042"
+    },
+    {
+      "id": "R128_22",
+      "slotA": "p043",
+      "slotB": "p044"
+    },
+    {
+      "id": "R128_23",
+      "slotA": "p045",
+      "slotB": "p046"
+    },
+    {
+      "id": "R128_24",
+      "slotA": "p047",
+      "slotB": "p048"
+    },
+    {
+      "id": "R128_25",
+      "slotA": "p049",
+      "slotB": "p050"
+    },
+    {
+      "id": "R128_26",
+      "slotA": "p051",
+      "slotB": "p052"
+    },
+    {
+      "id": "R128_27",
+      "slotA": "p053",
+      "slotB": "p054"
+    },
+    {
+      "id": "R128_28",
+      "slotA": "p055",
+      "slotB": "p056"
+    },
+    {
+      "id": "R128_29",
+      "slotA": "p057",
+      "slotB": "p058"
+    },
+    {
+      "id": "R128_30",
+      "slotA": "p059",
+      "slotB": "p060"
+    },
+    {
+      "id": "R128_31",
+      "slotA": "p061",
+      "slotB": "p062"
+    },
+    {
+      "id": "R128_32",
+      "slotA": "p063",
+      "slotB": "p064"
+    },
+    {
+      "id": "R128_33",
+      "slotA": "p065",
+      "slotB": "p066"
+    },
+    {
+      "id": "R128_34",
+      "slotA": "p067",
+      "slotB": "p068"
+    },
+    {
+      "id": "R128_35",
+      "slotA": "p069",
+      "slotB": "p070"
+    },
+    {
+      "id": "R128_36",
+      "slotA": "p071",
+      "slotB": "p072"
+    },
+    {
+      "id": "R128_37",
+      "slotA": "p073",
+      "slotB": "p074"
+    },
+    {
+      "id": "R128_38",
+      "slotA": "p075",
+      "slotB": "p076"
+    },
+    {
+      "id": "R128_39",
+      "slotA": "p077",
+      "slotB": "p078"
+    },
+    {
+      "id": "R128_40",
+      "slotA": "p079",
+      "slotB": "p080"
+    },
+    {
+      "id": "R128_41",
+      "slotA": "p081",
+      "slotB": "p082"
+    },
+    {
+      "id": "R128_42",
+      "slotA": "p083",
+      "slotB": "p084"
+    },
+    {
+      "id": "R128_43",
+      "slotA": "p085",
+      "slotB": "p086"
+    },
+    {
+      "id": "R128_44",
+      "slotA": "p087",
+      "slotB": "p088"
+    },
+    {
+      "id": "R128_45",
+      "slotA": "p089",
+      "slotB": "p090"
+    },
+    {
+      "id": "R128_46",
+      "slotA": "p091",
+      "slotB": "p092"
+    },
+    {
+      "id": "R128_47",
+      "slotA": "p093",
+      "slotB": "p094"
+    },
+    {
+      "id": "R128_48",
+      "slotA": "p095",
+      "slotB": "p096"
+    },
+    {
+      "id": "R128_49",
+      "slotA": "p097",
+      "slotB": "p098"
+    },
+    {
+      "id": "R128_50",
+      "slotA": "p099",
+      "slotB": "p100"
+    },
+    {
+      "id": "R128_51",
+      "slotA": "p101",
+      "slotB": "p102"
+    },
+    {
+      "id": "R128_52",
+      "slotA": "p103",
+      "slotB": "p104"
+    },
+    {
+      "id": "R128_53",
+      "slotA": "p105",
+      "slotB": "p106"
+    },
+    {
+      "id": "R128_54",
+      "slotA": "p107",
+      "slotB": "p108"
+    },
+    {
+      "id": "R128_55",
+      "slotA": "p109",
+      "slotB": "p110"
+    },
+    {
+      "id": "R128_56",
+      "slotA": "p111",
+      "slotB": "p112"
+    },
+    {
+      "id": "R128_57",
+      "slotA": "p113",
+      "slotB": "p114"
+    },
+    {
+      "id": "R128_58",
+      "slotA": "p115",
+      "slotB": "p116"
+    },
+    {
+      "id": "R128_59",
+      "slotA": "p117",
+      "slotB": "p118"
+    },
+    {
+      "id": "R128_60",
+      "slotA": "p119",
+      "slotB": "p120"
+    },
+    {
+      "id": "R128_61",
+      "slotA": "p121",
+      "slotB": "p122"
+    },
+    {
+      "id": "R128_62",
+      "slotA": "p123",
+      "slotB": "p124"
+    },
+    {
+      "id": "R128_63",
+      "slotA": "p125",
+      "slotB": "p126"
+    },
+    {
+      "id": "R128_64",
+      "slotA": "p127",
+      "slotB": "p128"
+    }
+  ],
+  "bonus": [
+    {
+      "id": "most_aces",
+      "label": "Tennista con più ace",
+      "tipo": "giocatore"
+    },
+    {
+      "id": "most_breaks",
+      "label": "Tennista con più break ottenuti",
+      "tipo": "giocatore"
+    },
+    {
+      "id": "most_tiebreaks",
+      "label": "Tennista con più tie-break vinti",
+      "tipo": "giocatore"
+    }
+  ],
+  "_note": "Tabellone principale US Open 2026 (singolare maschile) — DA POPOLARE dopo il sorteggio ufficiale (27/08/2026). p001..p128 in ordine di tabellone dall'alto al basso: p001 vs p002 è il match R128_01, p003 vs p004 il R128_02, e così via. Per ogni giocatore compilare: nome (cognome), seed (1-32 o null per qualificato/wildcard/non testa di serie), rank/prevRank/points/trend (ranking ATP) ed espnId (id ESPN, necessario per la scheda giocatore e il sync risultati). setOptions = risultati esatti per numero di set (best-of-5)."
+}
