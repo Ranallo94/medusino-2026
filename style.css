@@ -2796,3 +2796,126 @@ select.field-input option { background: var(--bg-card2); }
 .clf-edit-btn:disabled { opacity: .35; cursor: default; }
 .clf-edit-del:hover { border-color: #b3452f; }
 .clf-edit-add { margin-top: 2px; }
+
+/* ════════════════════════════════════════════════════════════════
+   MEDUSINO — Ricerca giocatore + percorso pronosticato
+   ════════════════════════════════════════════════════════════════ */
+.pron-search {
+  position: relative;
+  display: flex; align-items: center; gap: 8px;
+  margin: 14px 0 10px;
+  padding: 0 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.pron-search:focus-within { border-color: var(--verde-light); }
+.pron-search-icon { font-size: 14px; opacity: .7; flex: 0 0 auto; }
+.pron-search-input {
+  flex: 1; min-width: 0;
+  padding: 11px 0;
+  background: none; border: none; outline: none;
+  color: var(--text); font-size: 15px;
+}
+.pron-search-input::placeholder { color: var(--text-muted); }
+.pron-search-input::-webkit-search-cancel-button { display: none; }
+.pron-search-clear {
+  flex: 0 0 auto; padding: 4px 6px;
+  color: var(--text-muted); font-size: 13px; line-height: 1;
+}
+.pron-search-clear:hover { color: var(--text); }
+
+.pron-search-res {
+  position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 30;
+  max-height: 300px; overflow-y: auto;
+  background: var(--bg-card2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+}
+.pron-search-hit {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  padding: 10px 12px; text-align: left;
+  color: var(--text); font-size: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.pron-search-hit:last-child { border-bottom: none; }
+.pron-search-hit:hover { background: var(--bg-card); }
+.psh-nome { font-weight: 600; }
+.psh-seed { color: var(--oro); font-size: 12px; font-weight: 700; }
+.psh-cta { margin-left: auto; color: var(--text-muted); font-size: 12px; }
+.pron-search-vuoto { padding: 12px; color: var(--text-muted); font-size: 13px; }
+.pron-filtro-vuoto { display: block; padding: 16px 4px; text-align: center; }
+
+.pron-percorso {
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--verde-light);
+  border-radius: var(--radius-sm);
+}
+.pron-percorso-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.pron-percorso-head h4 { font-size: 15px; font-weight: 800; color: var(--oro); }
+.pron-percorso-x { margin-left: auto; color: var(--text-muted); font-size: 14px; padding: 2px 6px; }
+.pron-percorso-x:hover { color: var(--text); }
+.pp-lista { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.pp-riga {
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  padding: 7px 10px;
+  background: var(--bg-card2); border-radius: 6px;
+  font-size: 13px;
+}
+.pp-turno { min-width: 88px; font-weight: 700; color: var(--text); }
+.pp-avv { color: var(--text-muted); }
+.pp-ok { margin-left: auto; color: var(--verde-light); font-weight: 600; }
+.pp-ko { margin-left: auto; color: var(--rosso); font-weight: 600; }
+.pron-percorso-nota { margin-top: 10px; font-size: 13px; color: var(--text-muted); }
+.pron-percorso-vuoto { font-size: 13px; color: var(--text-muted); }
+
+/* ════════════════════════════════════════════════════════════════
+   MEDUSINO — Tabellone: chip dei turni + compattazione allo scroll
+   ════════════════════════════════════════════════════════════════ */
+.bk-chips {
+  display: flex; gap: 6px; overflow-x: auto;
+  padding: 2px 0 10px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.bk-chips::-webkit-scrollbar { display: none; }
+.bk-chip {
+  flex: 0 0 auto;
+  padding: 7px 13px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted); font-size: 13px; font-weight: 600;
+  white-space: nowrap;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.bk-chip:hover { color: var(--text); border-color: var(--verde-light); }
+.bk-chip.active {
+  background: var(--verde); border-color: var(--verde-light);
+  color: var(--bianco);
+}
+
+/* La compattazione: altezza e posizioni animate mentre si scorre */
+.bk-canvas { transition: height .28s ease; }
+.bk-match  { transition: top .28s ease; }
+.bk-champ  { transition: top .28s ease; }
+.bk-head--off { opacity: 0; pointer-events: none; }
+
+/* Giocatore evidenziato dalla ricerca */
+.bk-slot.bk-hi {
+  background: var(--oro); color: var(--text-dark); font-weight: 800;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bk-canvas, .bk-match, .bk-champ { transition: none; }
+}
+.pron-percorso-bk {
+  margin-left: auto;
+  padding: 6px 12px;
+  background: var(--verde); border-radius: 999px;
+  color: var(--bianco); font-size: 12px; font-weight: 700;
+}
+.pron-percorso-bk:hover { background: var(--verde-light); }
+.pron-percorso-head .pron-percorso-x { margin-left: 4px; }
