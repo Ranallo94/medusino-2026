@@ -16,6 +16,7 @@ import { getPronostici, savePronostici, onSistemaSnapshot } from './db.js';
 import { caricaEvento, nomeGiocatore } from './evento.js';
 import {
   TURNI, SET_OPTIONS, matchId, matchIndex, getPron, getMatchPlayers, renderBracketGrafico,
+  percorsoGiocatore,
 } from './bracket.js';
 import { showToast } from './ui.js';
 import { rankBadge, infoBtn, openSchedaGiocatore } from './giocatore.js';
@@ -45,6 +46,7 @@ export async function initPronostici() {
 
   _buildShell();
   _built = true;
+  _initRicerca();
 
   // Stato apertura/chiusura in tempo reale
   if (_unsubSistema) _unsubSistema();
@@ -115,6 +117,14 @@ function _buildShell() {
         <span class="switch-knob"></span>
       </button>
     </div>
+    <div class="pron-search" id="pron-search">
+      <span class="pron-search-icon">🔎</span>
+      <input type="search" id="pron-cerca" class="pron-search-input" autocomplete="off"
+             placeholder="Cerca un tennista…" aria-label="Cerca un tennista">
+      <button type="button" class="pron-search-clear" id="pron-cerca-x" title="Azzera" hidden>✕</button>
+      <div class="pron-search-res" id="pron-cerca-res" hidden></div>
+    </div>
+    <div id="pron-percorso" class="pron-percorso" hidden></div>
     <div class="tab-bar" id="pronostici-tabs">${tabsHtml}</div>
     ${contentsHtml}
   `;
@@ -125,7 +135,7 @@ function _buildShell() {
     tab.addEventListener('click', () => {
       const r = tab.dataset.round;
       if (r === 'BONUS') _renderBonus();
-      else if (r === 'BRACKET') renderBracketGrafico(document.getElementById('bracket-grafico'), _pron, _db);
+      else if (r === 'BRACKET') renderBracketGrafico(document.getElementById('bracket-grafico'), _pron, _db, null, _evidenzia);
       else _renderRound(r);
     });
   });
@@ -227,7 +237,7 @@ function _renderRound(roundId) {
       `<button type="button" class="set-opt${set === s ? ' selected' : ''}" data-mid="${mid}" data-round="${roundId}" data-set="${s}">${s}</button>`
     ).join('');
 
-    html += `<div class="match-card${vinc ? ' match-done' : ''}" data-mid="${mid}">
+    html += `<div class="match-card${vinc ? ' match-done' : ''}" data-mid="${mid}" data-pids="${[a, b].filter(Boolean).join(',')}">
       <span class="match-num">${i + 1}</span>
       <div class="match-teams">${side(a)}<span class="match-vs">vs</span>${side(b)}</div>
       <div class="match-set${vinc ? '' : ' match-set--hidden'}"><span class="match-set-label">set</span>${setBtns}</div>
@@ -280,6 +290,7 @@ function _renderRound(roundId) {
   });
 
   _applyLockState();
+  _applicaFiltro();   // il ri-render azzera il filtro: lo riapplico
 }
 
 // ── RENDER BONUS ──────────────────────────────────────
@@ -431,4 +442,141 @@ function _errBox(titolo, dettaglio) {
   return `<div class="page-header"><h2 class="page-title">📋 Pronostici</h2></div>
     <div class="empty-state"><div class="empty-icon">⚠️</div>
     <p>${titolo}</p><p class="text-muted">${dettaglio || ''}</p></div>`;
+}
+
+
+// ── RICERCA GIOCATORE ─────────────────────────────────
+// Il campo fa due cose: filtra i match del turno aperto e, cliccando un
+// risultato, apre il percorso completo pronosticato per quel giocatore.
+let _filtro = '';
+let _evidenzia = null;   // giocatore da mettere in risalto nel tabellone
+
+/** Turno attualmente visibile fra i tab (o null se si è su Tabellone/Bonus). */
+function _roundAttivo() {
+  const tab = document.querySelector('#pronostici-tabs .tab.active');
+  const r = tab?.dataset.round;
+  return TURNI.some(t => t.id === r) ? r : null;
+}
+
+/** Giocatori del db il cui nome contiene `q` (max 8, teste di serie prima). */
+function _cercaGiocatori(q) {
+  const out = [];
+  for (const [pid, g] of Object.entries(_db.giocatori || {})) {
+    if (g.nome && g.nome.toLowerCase().includes(q)) out.push({ pid, g });
+  }
+  out.sort((x, y) => (x.g.seed || 999) - (y.g.seed || 999));
+  return out.slice(0, 8);
+}
+
+/** Nasconde nel turno aperto i match che non riguardano i giocatori trovati. */
+function _applicaFiltro() {
+  const round = _roundAttivo();
+  const box = round && document.getElementById('round-' + round);
+  if (!box) return;
+  const pids = _filtro ? new Set(_cercaGiocatori(_filtro).map(r => r.pid)) : null;
+  let visibili = 0;
+  box.querySelectorAll('.match-card').forEach(card => {
+    if (!pids) { card.hidden = false; visibili++; return; }
+    const suoi = (card.dataset.pids || '').split(',');
+    const ok = suoi.some(p => pids.has(p));
+    card.hidden = !ok;
+    if (ok) visibili++;
+  });
+  let vuoto = box.querySelector('.pron-filtro-vuoto');
+  if (_filtro && !visibili) {
+    if (!vuoto) {
+      vuoto = document.createElement('p');
+      vuoto.className = 'pron-filtro-vuoto match-locked-msg';
+      box.appendChild(vuoto);
+    }
+    vuoto.textContent = 'Nessuna partita di questo turno riguarda la tua ricerca.';
+    vuoto.hidden = false;
+  } else if (vuoto) {
+    vuoto.hidden = true;
+  }
+}
+
+/** Pannello col cammino pronosticato, turno per turno. */
+function _mostraPercorso(pid) {
+  const box = document.getElementById('pron-percorso');
+  if (!box) return;
+  _evidenzia = pid;
+  const tappe = percorsoGiocatore(_pron, _db, pid);
+  const nome = nomeGiocatore(_db, pid);
+
+  let corpo;
+  if (!tappe.length) {
+    corpo = `<p class="pron-percorso-vuoto">Non compare nel tabellone: controlla il sorteggio del 1º turno.</p>`;
+  } else {
+    const righe = tappe.map(t => {
+      const avv = t.avversario ? nomeGiocatore(_db, t.avversario) : '—';
+      const esito = t.vince
+        ? `<span class="pp-ok">passa il turno${t.set ? ' · ' + t.set : ''}</span>`
+        : `<span class="pp-ko">esce qui</span>`;
+      return `<li class="pp-riga"><span class="pp-turno">${t.nome}</span>
+                <span class="pp-avv">contro ${avv}</span>${esito}</li>`;
+    }).join('');
+    const ultima = tappe[tappe.length - 1];
+    const finale = ultima.vince && ultima.turno === 'F'
+      ? `<p class="pron-percorso-nota">Nel tuo pronostico vince il torneo.</p>`
+      : `<p class="pron-percorso-nota">Nel tuo pronostico arriva fino a: <strong>${ultima.nome}</strong>.</p>`;
+    corpo = `<ol class="pp-lista">${righe}</ol>${finale}`;
+  }
+
+  box.innerHTML = `
+    <div class="pron-percorso-head">
+      <h4>Percorso di ${nome}</h4>
+      <button type="button" class="pron-percorso-bk" id="pp-tabellone">Vedi nel tabellone</button>
+      <button type="button" class="pron-percorso-x" id="pp-chiudi" title="Chiudi">✕</button>
+    </div>${corpo}`;
+  box.hidden = false;
+  box.querySelector('#pp-chiudi').addEventListener('click', () => {
+    box.hidden = true; _evidenzia = null;
+    const bk = document.getElementById('bracket-grafico');
+    if (bk && bk.childElementCount) renderBracketGrafico(bk, _pron, _db, null, null);
+  });
+  box.querySelector('#pp-tabellone').addEventListener('click', () => {
+    document.querySelector('#pronostici-tabs .tab[data-round="BRACKET"]')?.click();
+  });
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function _initRicerca() {
+  const input = document.getElementById('pron-cerca');
+  const res   = document.getElementById('pron-cerca-res');
+  const clear = document.getElementById('pron-cerca-x');
+  if (!input) return;
+
+  const aggiorna = () => {
+    const q = input.value.trim().toLowerCase();
+    clear.hidden = !q;
+    _filtro = q.length >= 2 ? q : '';
+    _applicaFiltro();
+
+    if (!_filtro) { res.hidden = true; res.innerHTML = ''; return; }
+    const trovati = _cercaGiocatori(_filtro);
+    if (!trovati.length) {
+      res.innerHTML = `<p class="pron-search-vuoto">Nessun tennista con questo nome.</p>`;
+    } else {
+      res.innerHTML = trovati.map(({ pid, g }) =>
+        `<button type="button" class="pron-search-hit" data-pid="${pid}">
+           <span class="psh-nome">${g.nome}</span>${g.seed ? `<span class="psh-seed">[${g.seed}]</span>` : ''}
+           <span class="psh-cta">vedi percorso</span>
+         </button>`).join('');
+      res.querySelectorAll('.pron-search-hit').forEach(b =>
+        b.addEventListener('click', () => { _mostraPercorso(b.dataset.pid); res.hidden = true; }));
+    }
+    res.hidden = false;
+  };
+
+  input.addEventListener('input', aggiorna);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { input.value = ''; aggiorna(); input.blur(); }
+  });
+  clear.addEventListener('click', () => { input.value = ''; aggiorna(); input.focus(); });
+
+  // Cambiando turno, il filtro va riapplicato al turno che si apre
+  document.getElementById('pronostici-tabs')?.addEventListener('click', () => {
+    setTimeout(_applicaFiltro, 0);
+  });
 }

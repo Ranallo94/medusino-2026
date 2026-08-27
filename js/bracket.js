@@ -165,101 +165,203 @@ export function renderTabellone(container, pron, db) {
   container.innerHTML = html;
 }
 
+// ── Percorso di un giocatore nel pronostico ──────────────────────────────
+/**
+ * Ricostruisce il cammino di un giocatore turno per turno dentro un bracket.
+ * Per ogni turno in cui compare dice se è stato dato vincente, contro chi e
+ * con che punteggio; si ferma al turno in cui viene eliminato.
+ * @returns {Array<{turno:string, nome:string, avversario:string|null, vince:boolean, set:string|null}>}
+ */
+export function percorsoGiocatore(pron, db, pid) {
+  const tappe = [];
+  for (const t of TURNI) {
+    for (let i = 0; i < t.matches; i++) {
+      const { a, b } = getMatchPlayers(t.id, i, pron, db);
+      if (a !== pid && b !== pid) continue;
+      const p = getPron(pron, t.id, matchId(t.id, i));
+      const vince = !!(p && p.vincitore === pid);
+      tappe.push({
+        turno: t.id,
+        nome: t.nome,
+        avversario: a === pid ? b : a,
+        vince,
+        set: vince ? (p.set || null) : null,
+      });
+      break;
+    }
+    // se in questo turno non compare più, il cammino è finito
+    if (!tappe.length || tappe[tappe.length - 1].turno !== t.id) break;
+    if (!tappe[tappe.length - 1].vince) break;
+  }
+  return tappe;
+}
+
 // ── Render GRAFICO del tabellone completo (percorsi) ─────────────────────
-// Disegna l'albero a eliminazione diretta da 128 con connettori SVG.
-// `pron` = documento pronostici/risultati da cui leggere i vincitori per turno.
-// Read-only: evidenzia il vincitore scelto in ogni match e i percorsi.
-// `realWinners` (opzionale) = { roundId: Set(playerId) } dei vincitori reali per
-// turno: se passato, evidenzia con `bk-correct` le scelte dell'utente azzeccate.
-export function renderBracketGrafico(container, pron, db, realWinners) {
+// Albero a eliminazione diretta da 128 con connettori SVG, scorrevole in
+// orizzontale. Il layout verticale si ricalcola in base al turno più a
+// sinistra visibile: scorrendo verso la finale il tabellone si compatta
+// (da ~3.300 px a poche centinaia). I chip dei turni seguono lo scroll e,
+// se cliccati, portano al turno corrispondente.
+// `realWinners` (opzionale) = { roundId: Set(playerId) } dei vincitori reali.
+// `evidenzia` (opzionale) = playerId da mettere in risalto lungo il percorso.
+export function renderBracketGrafico(container, pron, db, realWinners, evidenzia) {
   if (!container) return;
 
-  const COL_W = 184;   // larghezza colonna (turno)
-  const BOX_W = COL_W - 22;
-  const PAD_X = 6;     // margine sinistro del box dentro la colonna
-  const MATCH_H = 42;  // altezza box match (2 slot)
-  const VGAP = 10;     // spazio fra match al 1º turno
-  const PAD_TOP = 32;  // spazio per la barra dei turni in alto
-  const ROW = MATCH_H + VGAP;
-
-  // Centri verticali di ogni match, turno per turno
-  const centers = {};
-  centers.R128 = [];
-  for (let i = 0; i < 64; i++) centers.R128[i] = PAD_TOP + i * ROW + MATCH_H / 2;
-  for (let ri = 1; ri < TURNI.length; ri++) {
-    const r = TURNI[ri].id, prev = TURNI[ri - 1].id;
-    centers[r] = [];
-    for (let i = 0; i < TURNI[ri].matches; i++) {
-      centers[r][i] = (centers[prev][2 * i] + centers[prev][2 * i + 1]) / 2;
-    }
-  }
-
+  const COL_W = 184, BOX_W = COL_W - 22, PAD_X = 6;
+  const MATCH_H = 42, VGAP = 10, PAD_TOP = 32, ROW = MATCH_H + VGAP;
   const CHAMP_W = 150;
-  const totalH = PAD_TOP * 2 + 64 * ROW;
-  const totalW = TURNI.length * COL_W + CHAMP_W;
+  const N = TURNI.length;
 
-  // Connettori SVG
-  let paths = '';
-  for (let ri = 1; ri < TURNI.length; ri++) {
-    const prev = TURNI[ri - 1].id;
-    const childRightX = (ri - 1) * COL_W + PAD_X + BOX_W;
-    const parentLeftX = ri * COL_W + PAD_X;
-    const midX = (childRightX + parentLeftX) / 2;
-    for (let i = 0; i < TURNI[ri].matches; i++) {
-      const py = centers[TURNI[ri].id][i];
-      [2 * i, 2 * i + 1].forEach(f => {
-        const cy = centers[prev][f];
-        paths += `<path d="M${childRightX},${cy} H${midX} V${py} H${parentLeftX}" class="bk-link"/>`;
-      });
-    }
-  }
-  // connettore finale → campione
+  // ── Costruzione statica del DOM (una sola volta) ──────────────────────
+  const chips = TURNI.map((t, ri) =>
+    `<button type="button" class="bk-chip" data-ri="${ri}">${t.nome}</button>`).join('');
+
+  let heads = TURNI.map((t, ri) =>
+    `<div class="bk-head" data-ri="${ri}" style="left:${ri * COL_W + PAD_X}px;width:${BOX_W}px">${t.nome}</div>`).join('');
+  heads += `<div class="bk-head bk-head--champ" style="left:${N * COL_W + 8}px;width:${CHAMP_W - 16}px">Campione</div>`;
+
   const champ = getCampione(pron);
-  const fY = centers.F[0];
-  const fRightX = (TURNI.length - 1) * COL_W + PAD_X + BOX_W;
-  paths += `<path d="M${fRightX},${fY} H${fRightX + 24}" class="bk-link bk-link--champ"/>`;
-
-  // Etichette turni (header)
-  let heads = '';
-  TURNI.forEach((t, ri) => {
-    heads += `<div class="bk-head" style="left:${ri * COL_W + PAD_X}px;width:${BOX_W}px">${t.nome}</div>`;
-  });
-  heads += `<div class="bk-head" style="left:${TURNI.length * COL_W + 8}px;width:${CHAMP_W - 16}px">Campione</div>`;
-
-  // Box dei match
   let boxes = '';
   TURNI.forEach((t, ri) => {
     for (let i = 0; i < t.matches; i++) {
-      const mid = matchId(t.id, i);
       const { a, b } = getMatchPlayers(t.id, i, pron, db);
-      const p = getPron(pron, t.id, mid);
+      const p = getPron(pron, t.id, matchId(t.id, i));
       const win = (p && (p.vincitore === a || p.vincitore === b)) ? p.vincitore : null;
-      const top = centers[t.id][i] - MATCH_H / 2;
-      const left = ri * COL_W + PAD_X;
       const slot = (pid) => {
         if (!pid) return `<div class="bk-slot bk-empty">·</div>`;
-        let w = win === pid ? ' bk-win' : (win ? ' bk-lose' : '');
-        if (realWinners && win === pid && realWinners[t.id] && realWinners[t.id].has(pid)) {
-          w += ' bk-correct';
-        }
-        return `<div class="bk-slot${w}" title="${nomeGiocatore(db, pid)}">${nomeGiocatore(db, pid)}</div>`;
+        let c = win === pid ? ' bk-win' : (win ? ' bk-lose' : '');
+        if (realWinners && win === pid && realWinners[t.id] && realWinners[t.id].has(pid)) c += ' bk-correct';
+        if (evidenzia && pid === evidenzia) c += ' bk-hi';
+        return `<div class="bk-slot${c}" data-pid="${pid}" title="${nomeGiocatore(db, pid)}">${nomeGiocatore(db, pid)}</div>`;
       };
-      boxes += `<div class="bk-match" style="top:${top}px;left:${left}px;width:${BOX_W}px;height:${MATCH_H}px">${slot(a)}${slot(b)}</div>`;
+      boxes += `<div class="bk-match" data-ri="${ri}" data-i="${i}" ` +
+               `style="left:${ri * COL_W + PAD_X}px;width:${BOX_W}px;height:${MATCH_H}px">${slot(a)}${slot(b)}</div>`;
     }
   });
-  // Box campione
   if (champ) {
-    boxes += `<div class="bk-champ" style="top:${fY - 18}px;left:${TURNI.length * COL_W + 8}px;width:${CHAMP_W - 16}px">🏆 ${nomeGiocatore(db, champ)}</div>`;
+    boxes += `<div class="bk-champ" data-ri="${N}" style="left:${N * COL_W + 8}px;width:${CHAMP_W - 16}px">` +
+             `🏆 ${nomeGiocatore(db, champ)}</div>`;
   }
 
   container.innerHTML = `
+    <div class="bk-chips" role="tablist">${chips}</div>
     <div class="bk-scroll">
-      <div class="bk-canvas" style="width:${totalW}px;height:${totalH + PAD_TOP}px">
+      <div class="bk-canvas">
         <div class="bk-heads">${heads}</div>
-        <svg class="bk-svg" width="${totalW}" height="${totalH + PAD_TOP}" viewBox="0 0 ${totalW} ${totalH + PAD_TOP}">${paths}</svg>
+        <svg class="bk-svg"></svg>
         ${boxes}
       </div>
     </div>`;
+
+  const scroller = container.querySelector('.bk-scroll');
+  const canvas   = container.querySelector('.bk-canvas');
+  const svg      = container.querySelector('.bk-svg');
+  const chipEls  = [...container.querySelectorAll('.bk-chip')];
+  const headEls  = [...container.querySelectorAll('.bk-head[data-ri]')];
+  const champEl  = container.querySelector('.bk-champ');
+  const matchEls = {};
+  container.querySelectorAll('.bk-match').forEach(el => {
+    (matchEls[el.dataset.ri] ||= [])[+el.dataset.i] = el;
+  });
+
+  let base = -1;
+
+  // ── Rilayout verticale a partire dal turno `b` ────────────────────────
+  function layout(b) {
+    if (b === base) return;
+    base = b;
+
+    const centers = {};
+    const n0 = TURNI[b].matches;
+    centers[b] = [];
+    for (let i = 0; i < n0; i++) centers[b][i] = PAD_TOP + i * ROW + MATCH_H / 2;
+    for (let ri = b + 1; ri < N; ri++) {
+      centers[ri] = [];
+      for (let i = 0; i < TURNI[ri].matches; i++) {
+        centers[ri][i] = (centers[ri - 1][2 * i] + centers[ri - 1][2 * i + 1]) / 2;
+      }
+    }
+
+    const H = PAD_TOP * 2 + n0 * ROW;
+    const W = Math.max(N * COL_W + CHAMP_W, (N - 1) * COL_W + scroller.clientWidth);
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
+    svg.setAttribute('width', W);
+    svg.setAttribute('height', H);
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+    // Posizioni dei box; i turni precedenti alla base spariscono
+    TURNI.forEach((t, ri) => {
+      const els = matchEls[ri] || [];
+      for (let i = 0; i < t.matches; i++) {
+        const el = els[i];
+        if (!el) continue;
+        if (ri < b) { el.style.display = 'none'; continue; }
+        el.style.display = '';
+        el.style.top = (centers[ri][i] - MATCH_H / 2) + 'px';
+      }
+    });
+    headEls.forEach((el, ri) => { el.classList.toggle('bk-head--off', ri < b); });
+    if (champEl) champEl.style.top = (centers[N - 1][0] - 18) + 'px';
+
+    // Connettori
+    let paths = '';
+    for (let ri = b + 1; ri < N; ri++) {
+      const childRightX = (ri - 1) * COL_W + PAD_X + BOX_W;
+      const parentLeftX = ri * COL_W + PAD_X;
+      const midX = (childRightX + parentLeftX) / 2;
+      for (let i = 0; i < TURNI[ri].matches; i++) {
+        const py = centers[ri][i];
+        [2 * i, 2 * i + 1].forEach(f => {
+          paths += `<path d="M${childRightX},${centers[ri - 1][f]} H${midX} V${py} H${parentLeftX}" class="bk-link"/>`;
+        });
+      }
+    }
+    if (champEl) {
+      const fY = centers[N - 1][0];
+      const fRightX = (N - 1) * COL_W + PAD_X + BOX_W;
+      paths += `<path d="M${fRightX},${fY} H${fRightX + 24}" class="bk-link bk-link--champ"/>`;
+    }
+    svg.innerHTML = paths;
+
+    chipEls.forEach((c, ri) => c.classList.toggle('active', ri === b));
+  }
+
+  // ── Scroll → aggiorna la base (throttle con rAF) ──────────────────────
+  let atteso = false;
+  function onScroll() {
+    if (atteso) return;
+    atteso = true;
+    requestAnimationFrame(() => {
+      atteso = false;
+      const b = Math.min(N - 1, Math.max(0, Math.floor((scroller.scrollLeft + COL_W * 0.55) / COL_W)));
+      layout(b);
+    });
+  }
+  scroller.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => { const b = base; base = -1; layout(b); });
+
+  /** Porta lo scroll orizzontale al turno `ri`, con fallback se scrollTo manca. */
+  function scrollAlTurno(ri) {
+    const x = ri * COL_W;
+    if (typeof scroller.scrollTo === 'function') {
+      try { scroller.scrollTo({ left: x, behavior: 'smooth' }); return; } catch (_) { /* fallback */ }
+    }
+    scroller.scrollLeft = x;
+  }
+
+  chipEls.forEach((c, ri) => {
+    c.addEventListener('click', () => { scrollAlTurno(ri); layout(ri); });
+  });
+
+  layout(0);
+  return {
+    /** Porta la vista sul turno indicato (id o indice). */
+    vaiA(round) {
+      const ri = typeof round === 'number' ? round : TURNI.findIndex(t => t.id === round);
+      if (ri >= 0) { scrollAlTurno(ri); layout(ri); }
+    },
+  };
 }
 
 // ── Render read-only dei bonus (per profilo.js) ──────────────────────────
