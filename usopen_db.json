@@ -87,14 +87,14 @@
       "espnId": "3694"
     },
     "p005": {
-      "nome": "Qualificato",
+      "nome": "Dimitrov",
       "seed": null,
-      "naz": "",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
-      "espnId": ""
+      "naz": "BUL",
+      "rank": 137,
+      "prevRank": 138,
+      "points": 432.0,
+      "trend": "+1",
+      "espnId": "1287"
     },
     "p006": {
       "nome": "Popyrin",
@@ -137,24 +137,24 @@
       "espnId": "7833"
     },
     "p010": {
-      "nome": "Qualificato",
+      "nome": "Wendelken",
       "seed": null,
-      "naz": "",
+      "naz": "GBR",
       "rank": null,
       "prevRank": null,
       "points": null,
       "trend": null,
-      "espnId": ""
+      "espnId": "4000"
     },
     "p011": {
-      "nome": "Qualificato",
+      "nome": "Svrcina",
       "seed": null,
-      "naz": "",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
-      "espnId": ""
+      "naz": "CZE",
+      "rank": 134,
+      "prevRank": 114,
+      "points": 445.0,
+      "trend": "-20",
+      "espnId": "3812"
     },
     "p012": {
       "nome": "Royer",
@@ -317,14 +317,14 @@
       "espnId": "3897"
     },
     "p028": {
-      "nome": "Qualificato",
+      "nome": "Passaro",
       "seed": null,
-      "naz": "",
+      "naz": "ITA",
       "rank": null,
       "prevRank": null,
       "points": null,
       "trend": null,
-      "espnId": ""
+      "espnId": "3820"
     },
     "p029": {
       "nome": "Choinski",
@@ -347,14 +347,14 @@
       "espnId": "3310"
     },
     "p031": {
-      "nome": "Qualificato",
+      "nome": "Guerrieri",
       "seed": null,
-      "naz": "",
+      "naz": "ITA",
       "rank": null,
       "prevRank": null,
       "points": null,
       "trend": null,
-      "espnId": ""
+      "espnId": "11636"
     },
     "p032": {
       "nome": "de Minaur",
@@ -457,24 +457,24 @@
       "espnId": "10319"
     },
     "p042": {
-      "nome": "Qualificato",
+      "nome": "Mochizuki",
       "seed": null,
-      "naz": "",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
-      "espnId": ""
+      "naz": "JPN",
+      "rank": 117,
+      "prevRank": 112,
+      "points": 532.0,
+      "trend": "-5",
+      "espnId": "7608"
     },
     "p043": {
-      "nome": "Qualificato",
+      "nome": "Rodionov",
       "seed": null,
-      "naz": "",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
-      "espnId": ""
+      "naz": "AUT",
+      "rank": 143,
+      "prevRank": 134,
+      "points": 395.0,
+      "trend": "-9",
+      "espnId": "3204"
     },
     "p044": {
       "nome": "Mpetshi Perricard",
@@ -557,14 +557,14 @@
       "espnId": "10153"
     },
     "p052": {
-      "nome": "Qualificato",
+      "nome": "Piros",
       "seed": null,
-      "naz": "",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
-      "espnId": ""
+      "naz": "HUN",
+      "rank": 118,
+      "prevRank": 121,
+      "points": 530.0,
+      "trend": "+3",
+      "espnId": "3110"
     },
     "p053": {
       "nome": "Ugo Carabelli",
@@ -617,14 +617,14 @@
       "espnId": "11757"
     },
     "p058": {
-      "nome": "Qualificato",
+      "nome": "Barrios Vera",
       "seed": null,
-      "naz": "",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
-      "espnId": ""
+      "naz": "CHI",
+      "rank": 144,
+      "prevRank": 147,
+      "points": 395.0,
+      "trend": "+3",
+      "espnId": "9923"
     },
     "p059": {
       "nome": "Shang",
@@ -647,24 +647,24 @@
       "espnId": "2278"
     },
     "p061": {
-      "nome": "Qualificato",
+      "nome": "Basavareddy",
       "seed": null,
-      "naz": "",
+      "naz": "USA",
       "rank": null,
       "prevRank": null,
       "points": null,
       "trend": null,
-      "espnId": ""
+      "espnId": "11083"
     },
     "p062": {
-      "nome": "Qualificato",
+      "nome": "Schoolkate",
       "seed": null,
-      "naz": "",
+      "naz": "AUS",
       "rank": null,
       "prevRank": null,
       "points": null,
       "trend": null,
-      "espnId": ""
+      "espnId": "4029"
     },
     "p063": {
       "nome": "Comesana",
@@ -697,14 +697,14 @@
       "espnId": "2383"
     },
     "p066": {
-      "nome": "Qualificato",
+      "nome": "Gaston",
       "seed": null,
-      "naz": "",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
-      "espnId": ""
+      "naz": "FRA",
+      "rank": 88,
+      "prevRank": 97,
+      "points": 697.0,
+      "trend": "+9",
+      "espnId": "3375"
     },
     "p067": {
       "nome": "Gorzny",
@@ -817,14 +817,14 @@
       "espnId": "3471"
     },
     "p078": {
-      "nome": "Qualificato",
+      "nome": "Sakamoto",
       "seed": null,
-      "naz": "",
+      "naz": "JPN",
       "rank": null,
       "prevRank": null,
       "points": null,
       "trend": null,
-      "espnId": ""
+      "espnId": "13871"
     },
     "p079": {
       "nome": "Damm",
@@ -877,14 +877,14 @@
       "espnId": "11400"
     },
     "p084": {
-      "nome": "Qualificato",
+      "nome": "Cina",
       "seed": null,
-      "naz": "",
+      "naz": "ITA",
       "rank": null,
       "prevRank": null,
       "points": null,
       "trend": null,
-      "espnId": ""
+      "espnId": "14601"
     },
     "p085": {
       "nome": "Merida",
@@ -957,14 +957,14 @@
       "espnId": "11640"
     },
     "p092": {
-      "nome": "Qualificato",
+      "nome": "Fearnley",
       "seed": null,
-      "naz": "",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
-      "espnId": ""
+      "naz": "GBR",
+      "rank": 100,
+      "prevRank": 107,
+      "points": 623.0,
+      "trend": "+7",
+      "espnId": "11685"
     },
     "p093": {
       "nome": "Berrettini",
@@ -1107,14 +1107,14 @@
       "espnId": "1590"
     },
     "p107": {
-      "nome": "Qualificato",
+      "nome": "Samuel",
       "seed": null,
-      "naz": "",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
-      "espnId": ""
+      "naz": "GBR",
+      "rank": 110,
+      "prevRank": 113,
+      "points": 567.0,
+      "trend": "+3",
+      "espnId": "10645"
     },
     "p108": {
       "nome": "Machac",
@@ -1127,14 +1127,14 @@
       "espnId": "3811"
     },
     "p109": {
-      "nome": "Qualificato",
+      "nome": "Harris",
       "seed": null,
-      "naz": "",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
-      "espnId": ""
+      "naz": "RSA",
+      "rank": 139,
+      "prevRank": 175,
+      "points": 428.0,
+      "trend": "+36",
+      "espnId": "2863"
     },
     "p110": {
       "nome": "Kennedy",
@@ -1227,14 +1227,14 @@
       "espnId": "8710"
     },
     "p119": {
-      "nome": "Qualificato",
+      "nome": "Wong",
       "seed": null,
-      "naz": "",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
-      "espnId": ""
+      "naz": "HKG",
+      "rank": 94,
+      "prevRank": 93,
+      "points": 668.0,
+      "trend": "-1",
+      "espnId": "11398"
     },
     "p120": {
       "nome": "Paul",
@@ -1270,10 +1270,10 @@
       "nome": "Wu",
       "seed": null,
       "naz": "CHN",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
+      "rank": 113,
+      "prevRank": 118,
+      "points": 551.0,
+      "trend": "+5",
       "espnId": "2875"
     },
     "p124": {
@@ -1666,5 +1666,5 @@
       "tipo": "giocatore"
     }
   ],
-  "_note": "Tabellone principale US Open 2026 (singolare maschile) — sorteggio ufficiale, fonte usopen.org (feed draws/MS.json), scaricato il 27/08/2026. p001..p128 in ordine di tabellone dall'alto (Zverev, testa n.1) al basso (Alcaraz, n.2). Ranking ATP ed espnId da ESPN. Gli slot ancora da assegnare compaiono come \"Qualificato\": vanno aggiornati a qualificazioni concluse. setOptions = risultati esatti per numero di set."
+  "_note": "Tabellone principale US Open 2026 (singolare maschile) — sorteggio ufficiale, fonte usopen.org (feed draws/MS.json), scaricato il 27/08/2026. p001..p128 in ordine di tabellone dall'alto (Zverev, testa n.1) al basso (Alcaraz, n.2). Ranking ATP ed espnId da ESPN. Tabellone completo: i 16 qualificati e i lucky loser sono stati inseriti il 27/08/2026 a qualificazioni concluse. setOptions = risultati esatti per numero di set."
 }
