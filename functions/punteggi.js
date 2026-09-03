@@ -70,6 +70,10 @@ function vincitoriTurno(doc, roundId) {
  * @param {Object} db         usopen_db (per le categorie bonus)
  */
 function calcolaPunteggio(pron, risultati, db) {
+  // Slot in cui il giocatore si e' ritirato dopo la chiusura dei pronostici ed e'
+  // stato rimpiazzato da un lucky loser. Chi li aveva scelti non prende punti in
+  // nessun turno: aveva pronosticato un altro giocatore.
+  const annullati = new Set((db && db.sostituiti || []).map(x => (typeof x === 'string' ? x : x.pid)));
   const breakdown = { esiti: 0, set: 0, bonus: 0, perTurno: {} };
   const tie = { campione: 0, finalisti: 0, semifinalisti: 0, quarti: 0, setEsatti: 0, bonusStat: 0 };
 
@@ -79,6 +83,7 @@ function calcolaPunteggio(pron, risultati, db) {
     const scelti = vincitoriTurno(pron, r);
     let esiti = 0, set = 0, nGiusti = 0, nSet = 0;
     Object.keys(scelti).forEach((pid) => {
+      if (annullati.has(pid)) return;   // slot annullato: nessun punto, nemmeno se il sostituto vince
       if (Object.prototype.hasOwnProperty.call(reali, pid)) {
         esiti += WINNER_POINTS[r];
         nGiusti++;
