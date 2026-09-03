@@ -51,19 +51,19 @@
       "seed": 1,
       "naz": "GER",
       "rank": 2,
-      "prevRank": 3,
+      "prevRank": 2,
       "points": 7790.0,
-      "trend": "+1",
+      "trend": "-",
       "espnId": "2375"
     },
     "p002": {
       "nome": "Sonego",
       "seed": null,
       "naz": "ITA",
-      "rank": 91,
-      "prevRank": 88,
-      "points": 683.0,
-      "trend": "-3",
+      "rank": 89,
+      "prevRank": 91,
+      "points": 698.0,
+      "trend": "+2",
       "espnId": "3052"
     },
     "p003": {
@@ -71,9 +71,9 @@
       "seed": null,
       "naz": "FRA",
       "rank": 52,
-      "prevRank": 57,
+      "prevRank": 52,
       "points": 1030.0,
-      "trend": "+5",
+      "trend": "-",
       "espnId": "2362"
     },
     "p004": {
@@ -81,9 +81,9 @@
       "seed": null,
       "naz": "ARG",
       "rank": 82,
-      "prevRank": 87,
+      "prevRank": 82,
       "points": 732.0,
-      "trend": "+5",
+      "trend": "-",
       "espnId": "3694"
     },
     "p005": {
@@ -91,9 +91,9 @@
       "seed": null,
       "naz": "BUL",
       "rank": 137,
-      "prevRank": 138,
+      "prevRank": 137,
       "points": 432.0,
-      "trend": "+1",
+      "trend": "-",
       "espnId": "1287"
     },
     "p006": {
@@ -101,9 +101,9 @@
       "seed": null,
       "naz": "AUS",
       "rank": 130,
-      "prevRank": 128,
+      "prevRank": 130,
       "points": 458.0,
-      "trend": "-2",
+      "trend": "-",
       "espnId": "2862"
     },
     "p007": {
@@ -111,9 +111,9 @@
       "seed": null,
       "naz": "GER",
       "rank": 54,
-      "prevRank": 55,
+      "prevRank": 54,
       "points": 991.0,
-      "trend": "+1",
+      "trend": "-",
       "espnId": "3322"
     },
     "p008": {
@@ -121,9 +121,9 @@
       "seed": 25,
       "naz": "CHI",
       "rank": 28,
-      "prevRank": 29,
+      "prevRank": 28,
       "points": 1688.0,
-      "trend": "+1",
+      "trend": "-",
       "espnId": "2970"
     },
     "p009": {
@@ -131,9 +131,9 @@
       "seed": 21,
       "naz": "ITA",
       "rank": 22,
-      "prevRank": 20,
+      "prevRank": 22,
       "points": 2175.0,
-      "trend": "-2",
+      "trend": "-",
       "espnId": "7833"
     },
     "p010": {
@@ -151,29 +151,29 @@
       "seed": null,
       "naz": "CZE",
       "rank": 134,
-      "prevRank": 114,
+      "prevRank": 134,
       "points": 445.0,
-      "trend": "-20",
+      "trend": "-",
       "espnId": "3812"
     },
     "p012": {
       "nome": "Royer",
       "seed": null,
       "naz": "FRA",
-      "rank": 74,
-      "prevRank": 78,
+      "rank": 75,
+      "prevRank": 74,
       "points": 778.0,
-      "trend": "+4",
+      "trend": "-1",
       "espnId": "4022"
     },
     "p013": {
       "nome": "Sweeny",
       "seed": null,
       "naz": "AUS",
-      "rank": 122,
-      "prevRank": 124,
+      "rank": 123,
+      "prevRank": 122,
       "points": 506.0,
-      "trend": "+2",
+      "trend": "-1",
       "espnId": "4030"
     },
     "p014": {
@@ -181,19 +181,19 @@
       "seed": null,
       "naz": "FRA",
       "rank": 62,
-      "prevRank": 60,
+      "prevRank": 62,
       "points": 935.0,
-      "trend": "-2",
+      "trend": "-",
       "espnId": "2886"
     },
     "p015": {
       "nome": "Fery",
       "seed": null,
       "naz": "GBR",
-      "rank": 37,
+      "rank": 33,
       "prevRank": 37,
-      "points": 1253.0,
-      "trend": "-",
+      "points": 1415.0,
+      "trend": "+4",
       "espnId": "8621"
     },
     "p016": {
@@ -201,9 +201,9 @@
       "seed": 13,
       "naz": "ITA",
       "rank": 14,
-      "prevRank": 15,
+      "prevRank": 14,
       "points": 2605.0,
-      "trend": "+1",
+      "trend": "-",
       "espnId": "3764"
     },
     "p017": {
@@ -211,20 +211,20 @@
       "seed": 12,
       "naz": "ESP",
       "rank": 13,
-      "prevRank": 11,
+      "prevRank": 13,
       "points": 2671.0,
-      "trend": "-2",
+      "trend": "-",
       "espnId": "12657"
     },
     "p018": {
-      "nome": "Kokkinakis",
+      "nome": "Bu",
       "seed": null,
-      "naz": "AUS",
-      "rank": null,
-      "prevRank": null,
-      "points": null,
-      "trend": null,
-      "espnId": "2320"
+      "naz": "CHN",
+      "rank": 124,
+      "prevRank": 124,
+      "points": 496.0,
+      "trend": "-",
+      "espnId": "11382"
     },
     "p019": {
       "nome": "Marozsan",
@@ -240,10 +240,10 @@
       "nome": "Zheng",
       "seed": null,
       "naz": "USA",
-      "rank": 106,
-      "prevRank": 110,
+      "rank": 107,
+      "prevRank": 106,
       "points": 590.0,
-      "trend": "+4",
+      "trend": "-1",
       "espnId": "12932"
     },
     "p021": {
@@ -251,9 +251,9 @@
       "seed": null,
       "naz": "USA",
       "rank": 80,
-      "prevRank": 84,
+      "prevRank": 80,
       "points": 759.0,
-      "trend": "+4",
+      "trend": "-",
       "espnId": "3953"
     },
     "p022": {
@@ -261,37 +261,37 @@
       "seed": null,
       "naz": "GER",
       "rank": 57,
-      "prevRank": 65,
+      "prevRank": 57,
       "points": 964.0,
-      "trend": "+8",
+      "trend": "-",
       "espnId": "3203"
     },
     "p023": {
       "nome": "Cerundolo",
       "seed": null,
       "naz": "ARG",
-      "rank": 51,
+      "rank": 45,
       "prevRank": 51,
-      "points": 1040.0,
-      "trend": "-",
+      "points": 1076.0,
+      "trend": "+6",
       "espnId": "4008"
     },
     "p024": {
-      "nome": "Ruud",
-      "seed": 19,
-      "naz": "NOR",
-      "rank": 20,
-      "prevRank": 17,
-      "points": 2385.0,
-      "trend": "-3",
-      "espnId": "2989"
+      "nome": "Gea",
+      "seed": null,
+      "naz": "FRA",
+      "rank": 87,
+      "prevRank": 86,
+      "points": 709.0,
+      "trend": "-1",
+      "espnId": "10427"
     },
     "p025": {
       "nome": "Bergs",
       "seed": 31,
       "naz": "BEL",
-      "rank": 35,
-      "prevRank": 33,
+      "rank": 37,
+      "prevRank": 35,
       "points": 1345.0,
       "trend": "-2",
       "espnId": "3356"
@@ -310,10 +310,10 @@
       "nome": "de Jong",
       "seed": null,
       "naz": "NED",
-      "rank": 99,
-      "prevRank": 106,
+      "rank": 100,
+      "prevRank": 99,
       "points": 628.0,
-      "trend": "+7",
+      "trend": "-1",
       "espnId": "3897"
     },
     "p028": {
@@ -330,20 +330,20 @@
       "nome": "Choinski",
       "seed": null,
       "naz": "GBR",
-      "rank": 75,
-      "prevRank": 77,
+      "rank": 76,
+      "prevRank": 75,
       "points": 773.0,
-      "trend": "+2",
+      "trend": "-1",
       "espnId": "2720"
     },
     "p030": {
       "nome": "van de Zandschulp",
       "seed": null,
       "naz": "NED",
-      "rank": 71,
-      "prevRank": 59,
-      "points": 834.0,
-      "trend": "-12",
+      "rank": 70,
+      "prevRank": 71,
+      "points": 868.0,
+      "trend": "+1",
       "espnId": "3310"
     },
     "p031": {
@@ -361,9 +361,9 @@
       "seed": 6,
       "naz": "AUS",
       "rank": 7,
-      "prevRank": 8,
+      "prevRank": 7,
       "points": 3650.0,
-      "trend": "+1",
+      "trend": "-",
       "espnId": "2651"
     },
     "p033": {
@@ -381,9 +381,9 @@
       "seed": null,
       "naz": "AUS",
       "rank": 85,
-      "prevRank": 95,
-      "points": 709.0,
-      "trend": "+10",
+      "prevRank": 85,
+      "points": 724.0,
+      "trend": "-",
       "espnId": "3716"
     },
     "p035": {
@@ -391,59 +391,59 @@
       "seed": null,
       "naz": "ARG",
       "rank": 59,
-      "prevRank": 61,
+      "prevRank": 59,
       "points": 960.0,
-      "trend": "+2",
+      "trend": "-",
       "espnId": "4011"
     },
     "p036": {
       "nome": "Khachanov",
       "seed": null,
       "naz": "RUS",
-      "rank": 49,
-      "prevRank": 39,
+      "rank": 50,
+      "prevRank": 49,
       "points": 1050.0,
-      "trend": "-10",
+      "trend": "-1",
       "espnId": "2367"
     },
     "p037": {
       "nome": "Molcan",
       "seed": null,
       "naz": "SVK",
-      "rank": 84,
-      "prevRank": 75,
+      "rank": 86,
+      "prevRank": 84,
       "points": 710.0,
-      "trend": "-9",
+      "trend": "-2",
       "espnId": "2635"
     },
     "p038": {
       "nome": "Bonzi",
       "seed": null,
       "naz": "FRA",
-      "rank": 109,
-      "prevRank": 100,
-      "points": 572.0,
-      "trend": "-9",
+      "rank": 97,
+      "prevRank": 109,
+      "points": 656.0,
+      "trend": "+12",
       "espnId": "2355"
     },
     "p039": {
       "nome": "Giron",
       "seed": null,
       "naz": "USA",
-      "rank": 77,
-      "prevRank": 83,
+      "rank": 78,
+      "prevRank": 77,
       "points": 765.0,
-      "trend": "+6",
+      "trend": "-1",
       "espnId": "1993"
     },
     "p040": {
       "nome": "Buse",
       "seed": 32,
       "naz": "PER",
-      "rank": 36,
+      "rank": 30,
       "prevRank": 36,
-      "points": 1310.0,
-      "trend": "-",
+      "points": 1550.0,
+      "trend": "+6",
       "espnId": "11226"
     },
     "p041": {
@@ -451,9 +451,9 @@
       "seed": 17,
       "naz": "CZE",
       "rank": 18,
-      "prevRank": 16,
+      "prevRank": 18,
       "points": 2445.0,
-      "trend": "-2",
+      "trend": "-",
       "espnId": "10319"
     },
     "p042": {
@@ -461,9 +461,9 @@
       "seed": null,
       "naz": "JPN",
       "rank": 117,
-      "prevRank": 112,
+      "prevRank": 117,
       "points": 532.0,
-      "trend": "-5",
+      "trend": "-",
       "espnId": "7608"
     },
     "p043": {
@@ -471,29 +471,29 @@
       "seed": null,
       "naz": "AUT",
       "rank": 143,
-      "prevRank": 134,
+      "prevRank": 143,
       "points": 395.0,
-      "trend": "-9",
+      "trend": "-",
       "espnId": "3204"
     },
     "p044": {
       "nome": "Mpetshi Perricard",
       "seed": null,
       "naz": "FRA",
-      "rank": 104,
-      "prevRank": 92,
+      "rank": 105,
+      "prevRank": 104,
       "points": 600.0,
-      "trend": "-12",
+      "trend": "-1",
       "espnId": "8885"
     },
     "p045": {
       "nome": "Vallejo",
       "seed": null,
       "naz": "PAR",
-      "rank": 61,
-      "prevRank": 70,
-      "points": 948.0,
-      "trend": "+9",
+      "rank": 60,
+      "prevRank": 61,
+      "points": 954.0,
+      "trend": "+1",
       "espnId": "11396"
     },
     "p046": {
@@ -511,9 +511,9 @@
       "seed": null,
       "naz": "POR",
       "rank": 41,
-      "prevRank": 47,
+      "prevRank": 41,
       "points": 1135.0,
-      "trend": "+6",
+      "trend": "-",
       "espnId": "4115"
     },
     "p048": {
@@ -521,9 +521,9 @@
       "seed": 14,
       "naz": "USA",
       "rank": 15,
-      "prevRank": 12,
+      "prevRank": 15,
       "points": 2565.0,
-      "trend": "-3",
+      "trend": "-",
       "espnId": "10386"
     },
     "p049": {
@@ -531,9 +531,9 @@
       "seed": 9,
       "naz": "USA",
       "rank": 10,
-      "prevRank": 9,
+      "prevRank": 10,
       "points": 3475.0,
-      "trend": "-1",
+      "trend": "-",
       "espnId": "2946"
     },
     "p050": {
@@ -550,10 +550,10 @@
       "nome": "Bellucci",
       "seed": null,
       "naz": "ITA",
-      "rank": 96,
-      "prevRank": 81,
-      "points": 656.0,
-      "trend": "-15",
+      "rank": 95,
+      "prevRank": 96,
+      "points": 659.0,
+      "trend": "+1",
       "espnId": "10153"
     },
     "p052": {
@@ -561,19 +561,19 @@
       "seed": null,
       "naz": "HUN",
       "rank": 118,
-      "prevRank": 121,
+      "prevRank": 118,
       "points": 530.0,
-      "trend": "+3",
+      "trend": "-",
       "espnId": "3110"
     },
     "p053": {
       "nome": "Ugo Carabelli",
       "seed": null,
       "naz": "ARG",
-      "rank": 76,
+      "rank": 77,
       "prevRank": 76,
       "points": 770.0,
-      "trend": "-",
+      "trend": "-1",
       "espnId": "3666"
     },
     "p054": {
@@ -581,9 +581,9 @@
       "seed": null,
       "naz": "GER",
       "rank": 44,
-      "prevRank": 43,
+      "prevRank": 44,
       "points": 1089.0,
-      "trend": "-1",
+      "trend": "-",
       "espnId": "2337"
     },
     "p055": {
@@ -610,10 +610,10 @@
       "nome": "Blockx",
       "seed": 28,
       "naz": "BEL",
-      "rank": 32,
+      "rank": 34,
       "prevRank": 32,
       "points": 1396.0,
-      "trend": "-",
+      "trend": "-2",
       "espnId": "11757"
     },
     "p058": {
@@ -621,9 +621,9 @@
       "seed": null,
       "naz": "CHI",
       "rank": 144,
-      "prevRank": 147,
+      "prevRank": 144,
       "points": 395.0,
-      "trend": "+3",
+      "trend": "-",
       "espnId": "9923"
     },
     "p059": {
@@ -641,9 +641,9 @@
       "seed": null,
       "naz": "ARG",
       "rank": 83,
-      "prevRank": 91,
+      "prevRank": 83,
       "points": 731.0,
-      "trend": "+8",
+      "trend": "-",
       "espnId": "2278"
     },
     "p061": {
@@ -670,10 +670,10 @@
       "nome": "Comesana",
       "seed": null,
       "naz": "ARG",
-      "rank": 123,
-      "prevRank": 109,
-      "points": 503.0,
-      "trend": "-14",
+      "rank": 119,
+      "prevRank": 123,
+      "points": 516.0,
+      "trend": "+4",
       "espnId": "10044"
     },
     "p064": {
@@ -681,9 +681,9 @@
       "seed": 5,
       "naz": "ITA",
       "rank": 6,
-      "prevRank": 10,
+      "prevRank": 6,
       "points": 3720.0,
-      "trend": "+4",
+      "trend": "-",
       "espnId": "7602"
     },
     "p065": {
@@ -691,19 +691,19 @@
       "seed": 7,
       "naz": "RUS",
       "rank": 8,
-      "prevRank": 7,
+      "prevRank": 8,
       "points": 3580.0,
-      "trend": "-1",
+      "trend": "-",
       "espnId": "2383"
     },
     "p066": {
       "nome": "Gaston",
       "seed": null,
       "naz": "FRA",
-      "rank": 88,
-      "prevRank": 97,
+      "rank": 91,
+      "prevRank": 88,
       "points": 697.0,
-      "trend": "+9",
+      "trend": "-3",
       "espnId": "3375"
     },
     "p067": {
@@ -731,29 +731,29 @@
       "seed": null,
       "naz": "ESP",
       "rank": 55,
-      "prevRank": 46,
+      "prevRank": 55,
       "points": 990.0,
-      "trend": "-9",
+      "trend": "-",
       "espnId": "2709"
     },
     "p070": {
       "nome": "Atmane",
       "seed": null,
       "naz": "FRA",
-      "rank": 90,
-      "prevRank": 45,
+      "rank": 92,
+      "prevRank": 90,
       "points": 687.0,
-      "trend": "-45",
+      "trend": "-2",
       "espnId": "10638"
     },
     "p071": {
       "nome": "Shimabukuro",
       "seed": null,
       "naz": "JPN",
-      "rank": 87,
-      "prevRank": 90,
+      "rank": 88,
+      "prevRank": 87,
       "points": 705.0,
-      "trend": "+3",
+      "trend": "-1",
       "espnId": "3935"
     },
     "p072": {
@@ -761,9 +761,9 @@
       "seed": 26,
       "naz": "FRA",
       "rank": 29,
-      "prevRank": 28,
+      "prevRank": 29,
       "points": 1683.0,
-      "trend": "-1",
+      "trend": "-",
       "espnId": "3511"
     },
     "p073": {
@@ -771,49 +771,49 @@
       "seed": 22,
       "naz": "MON",
       "rank": 23,
-      "prevRank": 19,
+      "prevRank": 23,
       "points": 2168.0,
-      "trend": "-4",
+      "trend": "-",
       "espnId": "9376"
     },
     "p074": {
       "nome": "Kovacevic",
       "seed": null,
       "naz": "USA",
-      "rank": 89,
-      "prevRank": 96,
-      "points": 690.0,
-      "trend": "+7",
+      "rank": 84,
+      "prevRank": 89,
+      "points": 730.0,
+      "trend": "+5",
       "espnId": "3849"
     },
     "p075": {
       "nome": "Majchrzak",
       "seed": null,
       "naz": "POL",
-      "rank": 72,
-      "prevRank": 68,
+      "rank": 73,
+      "prevRank": 72,
       "points": 827.0,
-      "trend": "-4",
+      "trend": "-1",
       "espnId": "2416"
     },
     "p076": {
       "nome": "Medjedovic",
       "seed": null,
       "naz": "SRB",
-      "rank": 78,
-      "prevRank": 73,
+      "rank": 79,
+      "prevRank": 78,
       "points": 764.0,
-      "trend": "-5",
+      "trend": "-1",
       "espnId": "8325"
     },
     "p077": {
       "nome": "Vukic",
       "seed": null,
       "naz": "AUS",
-      "rank": 95,
-      "prevRank": 99,
+      "rank": 96,
+      "prevRank": 95,
       "points": 659.0,
-      "trend": "+4",
+      "trend": "-1",
       "espnId": "3471"
     },
     "p078": {
@@ -830,9 +830,9 @@
       "nome": "Damm",
       "seed": null,
       "naz": "USA",
-      "rank": 92,
-      "prevRank": 94,
-      "points": 675.0,
+      "rank": 90,
+      "prevRank": 92,
+      "points": 697.0,
       "trend": "+2",
       "espnId": "10130"
     },
@@ -841,9 +841,9 @@
       "seed": 11,
       "naz": "USA",
       "rank": 12,
-      "prevRank": 23,
+      "prevRank": 12,
       "points": 2680.0,
-      "trend": "+11",
+      "trend": "-",
       "espnId": "2708"
     },
     "p081": {
@@ -851,29 +851,29 @@
       "seed": 16,
       "naz": "USA",
       "rank": 17,
-      "prevRank": 22,
+      "prevRank": 17,
       "points": 2485.0,
-      "trend": "+5",
+      "trend": "-",
       "espnId": "3774"
     },
     "p082": {
       "nome": "Baez",
       "seed": null,
       "naz": "ARG",
-      "rank": 50,
-      "prevRank": 53,
+      "rank": 51,
+      "prevRank": 50,
       "points": 1044.0,
-      "trend": "+3",
+      "trend": "-1",
       "espnId": "3340"
     },
     "p083": {
       "nome": "Michelsen",
       "seed": null,
       "naz": "USA",
-      "rank": 45,
-      "prevRank": 41,
+      "rank": 46,
+      "prevRank": 45,
       "points": 1070.0,
-      "trend": "-4",
+      "trend": "-1",
       "espnId": "11400"
     },
     "p084": {
@@ -891,49 +891,49 @@
       "seed": null,
       "naz": "ESP",
       "rank": 39,
-      "prevRank": 40,
+      "prevRank": 39,
       "points": 1157.0,
-      "trend": "+1",
+      "trend": "-",
       "espnId": "10239"
     },
     "p086": {
       "nome": "Fucsovics",
       "seed": null,
       "naz": "HUN",
-      "rank": 121,
-      "prevRank": 82,
+      "rank": 122,
+      "prevRank": 121,
       "points": 510.0,
-      "trend": "-39",
+      "trend": "-1",
       "espnId": "1862"
     },
     "p087": {
-      "nome": "Cilic",
+      "nome": "Virtanen",
       "seed": null,
-      "naz": "CRO",
-      "rank": 81,
-      "prevRank": 80,
-      "points": 751.0,
+      "naz": "FIN",
+      "rank": 109,
+      "prevRank": 108,
+      "points": 574.0,
       "trend": "-1",
-      "espnId": "464"
+      "espnId": "4099"
     },
     "p088": {
       "nome": "Rublev",
       "seed": 23,
       "naz": "RUS",
       "rank": 24,
-      "prevRank": 18,
+      "prevRank": 24,
       "points": 2080.0,
-      "trend": "-6",
+      "trend": "-",
       "espnId": "2642"
     },
     "p089": {
       "nome": "Etcheverry",
       "seed": 27,
       "naz": "ARG",
-      "rank": 31,
+      "rank": 32,
       "prevRank": 31,
       "points": 1440.0,
-      "trend": "-",
+      "trend": "-1",
       "espnId": "3739"
     },
     "p090": {
@@ -941,9 +941,9 @@
       "seed": null,
       "naz": "CZE",
       "rank": 69,
-      "prevRank": 71,
+      "prevRank": 69,
       "points": 883.0,
-      "trend": "+2",
+      "trend": "-",
       "espnId": "3809"
     },
     "p091": {
@@ -951,19 +951,19 @@
       "seed": null,
       "naz": "ESP",
       "rank": 65,
-      "prevRank": 67,
+      "prevRank": 65,
       "points": 922.0,
-      "trend": "+2",
+      "trend": "-",
       "espnId": "11640"
     },
     "p092": {
       "nome": "Fearnley",
       "seed": null,
       "naz": "GBR",
-      "rank": 100,
-      "prevRank": 107,
+      "rank": 101,
+      "prevRank": 100,
       "points": 623.0,
-      "trend": "+7",
+      "trend": "-1",
       "espnId": "11685"
     },
     "p093": {
@@ -971,9 +971,9 @@
       "seed": null,
       "naz": "ITA",
       "rank": 43,
-      "prevRank": 42,
+      "prevRank": 43,
       "points": 1115.0,
-      "trend": "-1",
+      "trend": "-",
       "espnId": "2622"
     },
     "p094": {
@@ -981,19 +981,19 @@
       "seed": null,
       "naz": "SUI",
       "rank": 127,
-      "prevRank": 125,
+      "prevRank": 127,
       "points": 486.0,
-      "trend": "-2",
+      "trend": "-",
       "espnId": "264"
     },
     "p095": {
       "nome": "Navone",
       "seed": null,
       "naz": "ARG",
-      "rank": 48,
-      "prevRank": 44,
+      "rank": 49,
+      "prevRank": 48,
       "points": 1065.0,
-      "trend": "-4",
+      "trend": "-1",
       "espnId": "9992"
     },
     "p096": {
@@ -1011,9 +1011,9 @@
       "seed": 8,
       "naz": "USA",
       "rank": 9,
-      "prevRank": 6,
+      "prevRank": 9,
       "points": 3480.0,
-      "trend": "-3",
+      "trend": "-",
       "espnId": "9250"
     },
     "p098": {
@@ -1030,20 +1030,20 @@
       "nome": "Dzumhur",
       "seed": null,
       "naz": "BIH",
-      "rank": 103,
-      "prevRank": 104,
+      "rank": 104,
+      "prevRank": 103,
       "points": 612.0,
-      "trend": "+1",
+      "trend": "-1",
       "espnId": "1842"
     },
     "p100": {
       "nome": "Hurkacz",
       "seed": null,
       "naz": "POL",
-      "rank": 46,
-      "prevRank": 69,
+      "rank": 47,
+      "prevRank": 46,
       "points": 1070.0,
-      "trend": "+23",
+      "trend": "-1",
       "espnId": "2726"
     },
     "p101": {
@@ -1051,19 +1051,19 @@
       "seed": null,
       "naz": "SRB",
       "rank": 64,
-      "prevRank": 66,
+      "prevRank": 64,
       "points": 925.0,
-      "trend": "+2",
+      "trend": "-",
       "espnId": "2874"
     },
     "p102": {
       "nome": "Shapovalov",
       "seed": null,
       "naz": "CAN",
-      "rank": 47,
-      "prevRank": 48,
+      "rank": 48,
+      "prevRank": 47,
       "points": 1065.0,
-      "trend": "+1",
+      "trend": "-1",
       "espnId": "2860"
     },
     "p103": {
@@ -1071,19 +1071,19 @@
       "seed": null,
       "naz": "FRA",
       "rank": 40,
-      "prevRank": 54,
+      "prevRank": 40,
       "points": 1140.0,
-      "trend": "+14",
+      "trend": "-",
       "espnId": "8814"
     },
     "p104": {
       "nome": "Norrie",
       "seed": 29,
       "naz": "GBR",
-      "rank": 33,
-      "prevRank": 35,
+      "rank": 35,
+      "prevRank": 33,
       "points": 1365.0,
-      "trend": "+2",
+      "trend": "-2",
       "espnId": "2366"
     },
     "p105": {
@@ -1091,9 +1091,9 @@
       "seed": 18,
       "naz": "CZE",
       "rank": 19,
-      "prevRank": 14,
+      "prevRank": 19,
       "points": 2420.0,
-      "trend": "-5",
+      "trend": "-",
       "espnId": "3754"
     },
     "p106": {
@@ -1101,9 +1101,9 @@
       "seed": null,
       "naz": "ESP",
       "rank": 66,
-      "prevRank": 72,
+      "prevRank": 66,
       "points": 899.0,
-      "trend": "+6",
+      "trend": "-",
       "espnId": "1590"
     },
     "p107": {
@@ -1111,9 +1111,9 @@
       "seed": null,
       "naz": "GBR",
       "rank": 110,
-      "prevRank": 113,
+      "prevRank": 110,
       "points": 567.0,
-      "trend": "+3",
+      "trend": "-",
       "espnId": "10645"
     },
     "p108": {
@@ -1121,9 +1121,9 @@
       "seed": null,
       "naz": "CZE",
       "rank": 58,
-      "prevRank": 62,
+      "prevRank": 58,
       "points": 960.0,
-      "trend": "+4",
+      "trend": "-",
       "espnId": "3811"
     },
     "p109": {
@@ -1131,9 +1131,9 @@
       "seed": null,
       "naz": "RSA",
       "rank": 139,
-      "prevRank": 175,
+      "prevRank": 139,
       "points": 428.0,
-      "trend": "+36",
+      "trend": "-",
       "espnId": "2863"
     },
     "p110": {
@@ -1151,9 +1151,9 @@
       "seed": null,
       "naz": "GRE",
       "rank": 53,
-      "prevRank": 49,
-      "points": 1000.0,
-      "trend": "-4",
+      "prevRank": 53,
+      "points": 1015.0,
+      "trend": "-",
       "espnId": "2869"
     },
     "p112": {
@@ -1161,9 +1161,9 @@
       "seed": 10,
       "naz": "FRA",
       "rank": 11,
-      "prevRank": 21,
+      "prevRank": 11,
       "points": 3140.0,
-      "trend": "+10",
+      "trend": "-",
       "espnId": "10052"
     },
     "p113": {
@@ -1171,9 +1171,9 @@
       "seed": 15,
       "naz": "KAZ",
       "rank": 16,
-      "prevRank": 13,
+      "prevRank": 16,
       "points": 2525.0,
-      "trend": "-3",
+      "trend": "-",
       "espnId": "2865"
     },
     "p114": {
@@ -1191,9 +1191,9 @@
       "seed": null,
       "naz": "ARG",
       "rank": 42,
-      "prevRank": 50,
+      "prevRank": 42,
       "points": 1125.0,
-      "trend": "+8",
+      "trend": "-",
       "espnId": "4010"
     },
     "p116": {
@@ -1201,29 +1201,29 @@
       "seed": null,
       "naz": "FRA",
       "rank": 67,
-      "prevRank": 52,
+      "prevRank": 67,
       "points": 895.0,
-      "trend": "-15",
+      "trend": "-",
       "espnId": "1266"
     },
     "p117": {
       "nome": "Prizmic",
       "seed": null,
       "naz": "CRO",
-      "rank": 101,
+      "rank": 102,
       "prevRank": 101,
       "points": 618.0,
-      "trend": "-",
+      "trend": "-1",
       "espnId": "10105"
     },
     "p118": {
       "nome": "Shevchenko",
       "seed": null,
       "naz": "KAZ",
-      "rank": 97,
-      "prevRank": 89,
+      "rank": 98,
+      "prevRank": 97,
       "points": 655.0,
-      "trend": "-8",
+      "trend": "-1",
       "espnId": "8710"
     },
     "p119": {
@@ -1231,9 +1231,9 @@
       "seed": null,
       "naz": "HKG",
       "rank": 94,
-      "prevRank": 93,
+      "prevRank": 94,
       "points": 668.0,
-      "trend": "-1",
+      "trend": "-",
       "espnId": "11398"
     },
     "p120": {
@@ -1241,29 +1241,29 @@
       "seed": 20,
       "naz": "USA",
       "rank": 21,
-      "prevRank": 24,
+      "prevRank": 21,
       "points": 2225.0,
-      "trend": "+3",
+      "trend": "-",
       "espnId": "2964"
     },
     "p121": {
       "nome": "Arnaldi",
       "seed": 30,
       "naz": "ITA",
-      "rank": 34,
+      "rank": 36,
       "prevRank": 34,
       "points": 1349.0,
-      "trend": "-",
+      "trend": "-2",
       "espnId": "3793"
     },
     "p122": {
       "nome": "Duckworth",
       "seed": null,
       "naz": "AUS",
-      "rank": 79,
-      "prevRank": 86,
-      "points": 763.0,
-      "trend": "+7",
+      "rank": 71,
+      "prevRank": 79,
+      "points": 853.0,
+      "trend": "+8",
       "espnId": "1857"
     },
     "p123": {
@@ -1271,9 +1271,9 @@
       "seed": null,
       "naz": "CHN",
       "rank": 113,
-      "prevRank": 118,
+      "prevRank": 113,
       "points": 551.0,
-      "trend": "+5",
+      "trend": "-",
       "espnId": "2875"
     },
     "p124": {
@@ -1281,39 +1281,39 @@
       "seed": null,
       "naz": "AUS",
       "rank": 93,
-      "prevRank": 98,
+      "prevRank": 93,
       "points": 670.0,
-      "trend": "+5",
+      "trend": "-",
       "espnId": "3093"
     },
     "p125": {
       "nome": "Faria",
       "seed": null,
       "naz": "POR",
-      "rank": 70,
-      "prevRank": 79,
+      "rank": 72,
+      "prevRank": 70,
       "points": 847.0,
-      "trend": "+9",
+      "trend": "-2",
       "espnId": "10219"
     },
     "p126": {
       "nome": "Brooksby",
       "seed": null,
       "naz": "USA",
-      "rank": 73,
-      "prevRank": 74,
-      "points": 800.0,
-      "trend": "+1",
+      "rank": 74,
+      "prevRank": 73,
+      "points": 803.0,
+      "trend": "-1",
       "espnId": "3621"
     },
     "p127": {
       "nome": "Safiullin",
       "seed": null,
       "naz": "RUS",
-      "rank": 98,
-      "prevRank": 103,
+      "rank": 99,
+      "prevRank": 98,
       "points": 634.0,
-      "trend": "+5",
+      "trend": "-1",
       "espnId": "2636"
     },
     "p128": {
@@ -1321,9 +1321,9 @@
       "seed": 2,
       "naz": "ESP",
       "rank": 3,
-      "prevRank": 2,
+      "prevRank": 3,
       "points": 7160.0,
-      "trend": "-1",
+      "trend": "-",
       "espnId": "3782"
     }
   },
@@ -1666,5 +1666,28 @@
       "tipo": "giocatore"
     }
   ],
-  "_note": "Tabellone principale US Open 2026 (singolare maschile) — sorteggio ufficiale, fonte usopen.org (feed draws/MS.json), scaricato il 27/08/2026. p001..p128 in ordine di tabellone dall'alto (Zverev, testa n.1) al basso (Alcaraz, n.2). Ranking ATP ed espnId da ESPN. Tabellone completo: i 16 qualificati e i lucky loser sono stati inseriti il 27/08/2026 a qualificazioni concluse. setOptions = risultati esatti per numero di set."
+  "_note": "Tabellone principale US Open 2026 (singolare maschile) — sorteggio ufficiale, fonte usopen.org (feed draws/MS.json), scaricato il 27/08/2026. p001..p128 in ordine di tabellone dall'alto (Zverev, testa n.1) al basso (Alcaraz, n.2). Ranking ATP ed espnId da ESPN. Tabellone completo: i 16 qualificati e i lucky loser sono stati inseriti il 27/08/2026 a qualificazioni concluse. Recepiti i lucky loser subentrati ai ritiri (aggiornato la sera del 27/08/2026). Il campo \"sostituiti\" elenca gli slot in cui un giocatore si e' ritirato dopo la chiusura dei pronostici ed e' stato rimpiazzato da un lucky loser: chi aveva pronosticato quello slot non prende punti in nessun turno, anche se il sostituto vince. setOptions = risultati esatti per numero di set.",
+  "sostituiti": [
+    {
+      "pid": "p018",
+      "uscito": "Kokkinakis",
+      "entrato": "Bu",
+      "match": "R128_09",
+      "quando": "2026-08-27"
+    },
+    {
+      "pid": "p024",
+      "uscito": "Ruud",
+      "entrato": "Gea",
+      "match": "R128_12",
+      "quando": "2026-08-27"
+    },
+    {
+      "pid": "p087",
+      "uscito": "Cilic",
+      "entrato": "Virtanen",
+      "match": "R128_44",
+      "quando": "2026-08-27"
+    }
+  ]
 }

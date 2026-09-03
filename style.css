@@ -2919,3 +2919,21 @@ select.field-input option { background: var(--bg-card2); }
 }
 .pron-percorso-bk:hover { background: var(--verde-light); }
 .pron-percorso-head .pron-percorso-x { margin-left: 4px; }
+
+/* Slot con giocatore ritirato e sostituito: non assegna punti */
+.bk-slot.bk-annullato {
+  background: repeating-linear-gradient(45deg,
+    rgba(229,62,62,.16) 0 6px, transparent 6px 12px);
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--rosso);
+}
+.reg-callout--warn {
+  margin: 12px 0;
+  padding: 12px 14px;
+  background: rgba(229,62,62,.10);
+  border: 1px solid rgba(229,62,62,.35);
+  border-radius: var(--radius-sm);
+  font-size: 13.5px; line-height: 1.55; color: var(--text);
+}
+.reg-callout--warn strong { color: var(--rosso); }
