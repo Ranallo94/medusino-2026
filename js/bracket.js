@@ -220,6 +220,8 @@ export function renderBracketGrafico(container, pron, db, realWinners, evidenzia
     `<div class="bk-head" data-ri="${ri}" style="left:${ri * COL_W + PAD_X}px;width:${BOX_W}px">${t.nome}</div>`).join('');
   heads += `<div class="bk-head bk-head--champ" style="left:${N * COL_W + 8}px;width:${CHAMP_W - 16}px">Campione</div>`;
 
+  // Slot con giocatore sostituito: segnalati, non assegnano punti
+  const annullati = new Set((db?.sostituiti || []).map(x => (typeof x === 'string' ? x : x.pid)));
   const champ = getCampione(pron);
   let boxes = '';
   TURNI.forEach((t, ri) => {
@@ -230,6 +232,7 @@ export function renderBracketGrafico(container, pron, db, realWinners, evidenzia
       const slot = (pid) => {
         if (!pid) return `<div class="bk-slot bk-empty">·</div>`;
         let c = win === pid ? ' bk-win' : (win ? ' bk-lose' : '');
+        if (annullati.has(pid)) c += ' bk-annullato';
         if (realWinners && win === pid && realWinners[t.id] && realWinners[t.id].has(pid)) c += ' bk-correct';
         if (evidenzia && pid === evidenzia) c += ' bk-hi';
         return `<div class="bk-slot${c}" data-pid="${pid}" title="${nomeGiocatore(db, pid)}">${nomeGiocatore(db, pid)}</div>`;
