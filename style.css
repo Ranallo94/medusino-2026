@@ -2765,6 +2765,62 @@ select.field-input option { background: var(--bg-card2); }
   min-width: 28px; text-align: right;
 }
 
+/* ── Admin › Statistiche (inserimento ace/break/tie-break turno per turno) ── */
+.stat-cat-tabs { margin-top: 14px; }
+.stat-round-tabs { margin-top: 4px; margin-bottom: 12px; }
+
+.stat-toolbar {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap;
+}
+.stat-filtro {
+  flex: 1 1 200px; min-width: 0; padding: 9px 12px;
+  border-radius: var(--radius-sm); border: 1px solid var(--border);
+  background: var(--bg-card); color: var(--text); font-size: 13px;
+}
+.stat-filtro:focus { outline: none; border-color: var(--verde-light); }
+.stat-progress {
+  flex: 0 0 auto; font-size: 12px; font-weight: 700; color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-rows { display: flex; flex-direction: column; gap: 6px; }
+.stat-row {
+  display: grid; grid-template-columns: 1fr 76px 76px; align-items: center; gap: 8px;
+  background: var(--bg-card2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 8px 12px;
+}
+.stat-row--done { border-color: var(--verde-light); }
+.stat-name {
+  color: var(--text); font-weight: 600; font-size: 13px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.stat-val {
+  width: 100%; padding: 8px; text-align: center; font-size: 14px; font-weight: 700;
+  border-radius: var(--radius-sm); border: 1px solid var(--border);
+  background: var(--bg-card); color: var(--text);
+  font-variant-numeric: tabular-nums;
+  -moz-appearance: textfield;
+}
+.stat-val::-webkit-outer-spin-button,
+.stat-val::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.stat-val:focus { outline: none; border-color: var(--verde-light); }
+.stat-tot {
+  font-size: 11px; color: var(--text-muted); text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.stat-tot strong { color: var(--oro); font-size: 13px; }
+
+.stat-top-wrap { margin-top: 26px; }
+.stat-top-badge {
+  margin-left: auto; font-size: 10px; font-weight: 700; letter-spacing: .04em;
+  color: var(--text-muted); border: 1px solid var(--border);
+  border-radius: 999px; padding: 2px 8px;
+}
+@media (max-width: 420px) {
+  .stat-row { grid-template-columns: 1fr 64px 58px; padding: 8px; gap: 6px; }
+  .stat-name { font-size: 12px; }
+}
+
 /* Editor admin (tab Bonus) */
 .clf-admin-section { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--border); }
 .clf-edit-wrap { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
