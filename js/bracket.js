@@ -391,6 +391,10 @@ export const CLASSIFICHE = [
   { id: 'tiebreaks', emoji: '🔥', label: 'Tie-break' },
 ];
 
+// Le classifiche sono derivate dalle statistiche per turno inserite in admin
+// (risultati/ufficiali.statistiche) e mostrate al massimo fino a questa posizione.
+export const CLASSIFICA_MAX_RIGHE = 30;
+
 /**
  * Render read-only delle tre classifiche (ace/break/tie-break).
  * Ordina ogni classifica per valore decrescente. Se non c'è nessun dato,
@@ -410,7 +414,8 @@ export function renderClassifiche(container, ris, db) {
     const rows = (clf[c.id] || [])
       .filter(r => r && r.pid)
       .slice()
-      .sort((a, b) => (b.v == null ? -Infinity : b.v) - (a.v == null ? -Infinity : a.v));
+      .sort((a, b) => (b.v == null ? -Infinity : b.v) - (a.v == null ? -Infinity : a.v))
+      .slice(0, CLASSIFICA_MAX_RIGHE); // le classifiche mostrano al massimo la Top 30
     if (!rows.length) return;
     html += `<div class="clf-card">
       <h5 class="clf-title">${c.emoji} ${c.label}</h5>

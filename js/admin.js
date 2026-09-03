@@ -32,6 +32,9 @@ let _aperti = true;
 let _built = false;
 let _unsubSistema = null;
 let _activeRound = 'R128';
+let _statCat = 'aces';      // categoria attiva nella scheda Statistiche
+let _statRound = 'R128';    // turno attivo nella scheda Statistiche
+let _statFiltro = '';       // filtro nome nella scheda Statistiche
 let _montepremiCfg = { quota: 0, percentuali: [60, 30, 10] };
 
 // Metodi di pagamento disponibili nel menu a tendina
@@ -47,6 +50,7 @@ export async function initAdmin() {
   if (!_ris.bracket) _ris.bracket = {};
   if (!_ris.bonus)   _ris.bonus = {};
   if (!_ris.classifiche) _ris.classifiche = {};
+  if (!_ris.statistiche) _ris.statistiche = {};
 
   _buildShell();
   _built = true;
@@ -56,7 +60,7 @@ export async function initAdmin() {
   // lascia la lista partite vuota.
   TURNI.forEach(t => _renderRoundRisultati(t.id));
   _renderBonus();
-  _renderClassifiche();
+  _renderStat();
 
   try { await _caricaConfigMontepremi(); } catch (e) { console.error('[admin] config montepremi', e); }
   try { await _caricaPartecipanti(); }     catch (e) { console.error('[admin] partecipanti', e); }
@@ -89,6 +93,16 @@ function _buildShell() {
      </div>`
   ).join('');
 
+  // Sotto-schede della sezione Statistiche: categoria (ace/break/tie-break) e turno.
+  // Non hanno data-tab: l'handler globale dei tab si limita a spostare la classe
+  // .active sul bottone, il contenuto lo ridisegna _renderStat().
+  const statCatTabs = CLASSIFICHE.map(c =>
+    `<button type="button" class="tab${c.id === _statCat ? ' active' : ''}" data-scat="${c.id}">${c.emoji} ${c.label}</button>`
+  ).join('');
+  const statRoundTabs = TURNI.map(t =>
+    `<button type="button" class="tab${t.id === _statRound ? ' active' : ''}" data-sround="${t.id}">${t.nome}</button>`
+  ).join('');
+
   page.innerHTML = `
     <div class="page-header">
       <h2 class="page-title">⚙️ Pannello Admin</h2>
@@ -101,6 +115,7 @@ function _buildShell() {
       </button>
       <button type="button" class="tab" data-tab="tab-admin-risultati">Risultati</button>
       <button type="button" class="tab" data-tab="tab-admin-bonus">🏆 Bonus</button>
+      <button type="button" class="tab" data-tab="tab-admin-statistiche">📊 Statistiche</button>
       <button type="button" class="tab" data-tab="tab-admin-partecipanti">Partecipanti</button>
       <button type="button" class="tab" data-tab="tab-admin-montepremi">💰 Montepremi</button>
       <button type="button" class="tab" data-tab="tab-admin-sistema">Sistema</button>
@@ -131,16 +146,30 @@ function _buildShell() {
       </div>
 
       <div class="clf-admin-section">
-        <div class="info-banner info-banner--yellow">
+        <div class="info-banner">
           <span>📊</span>
-          <span>Inserisci le <strong>classifiche</strong> di ace, break e tie-break. Scegli il giocatore dal menu e digita il valore: le righe si <strong>riordinano da sole</strong> per valore decrescente (valore più alto in cima). Usa <strong>🗑</strong> per rimuovere. Queste classifiche sono informative e <strong>non incidono sul punteggio</strong>.</span>
-        </div>
-        <div id="admin-classifiche-box" class="clf-edit-wrap"></div>
-        <div class="elim-save-row">
-          <button type="button" class="btn btn-primary" data-savris="CLASSIFICHE">💾 Salva classifiche</button>
-          <span class="elim-save-msg" id="rismsg-CLASSIFICHE"></span>
+          <span>Le classifiche di ace, break e tie-break ora si compilano nella scheda <strong>📊 Statistiche</strong>, turno per turno: totali e Top 30 si aggiornano da soli.</span>
         </div>
       </div>
+    </div>
+
+    <div id="tab-admin-statistiche" class="tab-content">
+      <div class="info-banner info-banner--yellow">
+        <span>📊</span>
+        <span>Inserisci <strong>ace</strong>, <strong>break ottenuti</strong> e <strong>tie-break vinti</strong> di ogni tennista, turno per turno. Compaiono solo i giocatori davvero in gara nel turno scelto. <strong>Totale e Top 30 si calcolano da soli</strong>: non c'è niente da ordinare a mano. Queste classifiche sono informative e <strong>non incidono sul punteggio</strong>.</span>
+      </div>
+      <div class="tab-bar stat-cat-tabs" id="stat-cat-tabs">${statCatTabs}</div>
+      <div class="tab-bar stat-round-tabs" id="stat-round-tabs">${statRoundTabs}</div>
+      <div class="stat-toolbar">
+        <input type="search" id="stat-filtro" class="stat-filtro" placeholder="🔎 Filtra per nome…" autocomplete="off">
+        <span class="stat-progress" id="stat-progress">—</span>
+      </div>
+      <div id="admin-stat-box" class="stat-rows"></div>
+      <div class="elim-save-row">
+        <button type="button" class="btn btn-primary" data-savris="STAT">💾 Salva statistiche</button>
+        <span class="elim-save-msg" id="rismsg-STAT"></span>
+      </div>
+      <div id="admin-stat-top" class="stat-top-wrap"></div>
     </div>
 
     <div id="tab-admin-partecipanti" class="tab-content">
@@ -176,10 +205,21 @@ function _buildShell() {
     btn.addEventListener('click', () => {
       const r = btn.dataset.savris;
       if (r === 'BONUS') _salvaBonus(btn);
-      else if (r === 'CLASSIFICHE') _salvaClassifiche(btn);
+      else if (r === 'STAT') _salvaStatistiche(btn);
       else _salvaRisultatiTurno(r, btn);
     });
   });
+
+  // Statistiche: cambio categoria / turno / filtro nome
+  page.querySelectorAll('#stat-cat-tabs .tab').forEach(tab =>
+    tab.addEventListener('click', () => { _statCat = tab.dataset.scat; _renderStat(); }));
+  page.querySelectorAll('#stat-round-tabs .tab').forEach(tab =>
+    tab.addEventListener('click', () => { _statRound = tab.dataset.sround; _renderStat(); }));
+  const filtro = page.querySelector('#stat-filtro');
+  if (filtro) filtro.addEventListener('input', () => { _statFiltro = filtro.value.trim().toLowerCase(); _renderStat({ keepFocus: true }); });
+  // Rientrando nella scheda, ricalcola chi è in gara (i risultati possono essere cambiati)
+  const tabStat = page.querySelector('[data-tab="tab-admin-statistiche"]');
+  if (tabStat) tabStat.addEventListener('click', () => setTimeout(() => _renderStat(), 0));
   // Re-render del turno risultati quando la sua tab diventa attiva
   page.querySelectorAll('#ris-round-tabs .tab').forEach(tab => {
     tab.addEventListener('click', () => { _activeRound = tab.dataset.rround; _renderRoundRisultati(_activeRound); });
@@ -469,6 +509,7 @@ async function _salvaRisultatiTurno(roundId, btn) {
     await setRisultati({ bracket: _ris.bracket, bonus: _ris.bonus });
     if (msg) { msg.textContent = '✅ Salvato'; msg.className = 'elim-save-msg ok'; }
     showToast('Risultati salvati. Ricalcolo classifica…', 'success');
+    _renderStat(); // i qualificati al turno successivo compaiono subito in Statistiche
     await _ricalcola(false);
   } catch (err) {
     if (msg) { msg.textContent = '❌ Errore'; msg.className = 'elim-save-msg err'; }
@@ -505,98 +546,200 @@ function _renderBonus() {
     }));
 }
 
-// ── CLASSIFICHE (ace / break / tie-break) ─────────────
-/** Opzioni <option> dei 128 giocatori del tabellone, ordinate per nome. */
-function _giocatoreOptions(sel) {
-  const ids = Object.keys(_db.giocatori || {})
-    .sort((x, y) => nomeGiocatore(_db, x).localeCompare(nomeGiocatore(_db, y), 'it'));
-  return '<option value="">— seleziona —</option>' +
-    ids.map(pid => `<option value="${pid}"${sel === pid ? ' selected' : ''}>${nomeGiocatore(_db, pid)}</option>`).join('');
+// ── STATISTICHE per turno (ace / break / tie-break) ───
+// Modello: risultati/ufficiali.statistiche = {
+//   aces:      { "<pid>": { R128: 12, R64: 8, R32: null, … } },
+//   breaks:    { … },
+//   tiebreaks: { … }
+// }
+// L'admin inserisce il dato di ogni tennista turno per turno; totali e Top 30
+// sono derivati (nessun ordinamento manuale). Al salvataggio la Top 30 di ogni
+// categoria viene riscritta in `classifiche`, che è ciò che legge la vista
+// pubblica (tab Risultati › Bonus).
+
+const STAT_TOP = 30; // quante posizioni tenere nelle classifiche pubbliche
+
+/** Mappa { pid: {turno: valore} } di una categoria, creandola se manca. */
+function _statMap(cat) {
+  if (!_ris.statistiche) _ris.statistiche = {};
+  if (!_ris.statistiche[cat] || typeof _ris.statistiche[cat] !== 'object') _ris.statistiche[cat] = {};
+  return _ris.statistiche[cat];
 }
 
-/** Garantisce l'esistenza della riga idx nella classifica cat e la restituisce. */
-function _clfEnsure(cat, idx) {
-  if (!_ris.classifiche) _ris.classifiche = {};
-  if (!Array.isArray(_ris.classifiche[cat])) _ris.classifiche[cat] = [];
-  if (!_ris.classifiche[cat][idx]) _ris.classifiche[cat][idx] = { pid: null, v: null };
-  return _ris.classifiche[cat][idx];
+/** Valore di un giocatore in un turno (null = non inserito). */
+function _statGet(cat, pid, roundId) {
+  const v = _ris.statistiche?.[cat]?.[pid]?.[roundId];
+  return (v == null || v === '') ? null : Number(v);
 }
 
-/** Editor delle tre classifiche (menu giocatore + valore; ordinamento automatico per valore desc). */
-function _renderClassifiche() {
-  const box = document.getElementById('admin-classifiche-box');
+/** Scrive il valore di un giocatore in un turno (null per svuotare). */
+function _statSet(cat, pid, roundId, val) {
+  const m = _statMap(cat);
+  if (!m[pid] || typeof m[pid] !== 'object') m[pid] = {};
+  m[pid][roundId] = val;
+}
+
+/** Somma di tutti i turni per un giocatore. */
+function _statTot(cat, pid) {
+  const row = _ris.statistiche?.[cat]?.[pid] || {};
+  return TURNI.reduce((s, t) => s + (Number(row[t.id]) || 0), 0);
+}
+
+/** I giocatori effettivamente in gara in un turno (dai risultati reali). */
+function _giocatoriDelTurno(roundId) {
+  const t = TURNI.find(x => x.id === roundId);
+  if (!t) return [];
+  const out = [];
+  for (let i = 0; i < t.matches; i++) {
+    const { a, b } = getMatchPlayers(roundId, i, _ris, _db);
+    if (a) out.push(a);
+    if (b) out.push(b);
+  }
+  return [...new Set(out)].sort((x, y) =>
+    nomeGiocatore(_db, x).localeCompare(nomeGiocatore(_db, y), 'it'));
+}
+
+/** Classifica derivata dai totali: solo chi ha almeno 1, ordinata desc, tagliata a `limit`. */
+function _classificaDaStat(cat, limit = STAT_TOP) {
+  const m = _ris.statistiche?.[cat] || {};
+  return Object.keys(m)
+    .map(pid => ({ pid, v: _statTot(cat, pid) }))
+    .filter(r => r.v > 0)
+    .sort((a, b) => (b.v - a.v) ||
+      nomeGiocatore(_db, a.pid).localeCompare(nomeGiocatore(_db, b.pid), 'it'))
+    .slice(0, limit);
+}
+
+/**
+ * Griglia di inserimento: categoria + turno attivi, una riga per giocatore in gara.
+ * Il totale a fianco di ogni riga e la Top 30 in fondo si aggiornano mentre si digita.
+ * @param {{keepFocus?: boolean}} [opts] non ridisegnare gli input (usato dal filtro)
+ */
+function _renderStat(opts = {}) {
+  const page = document.getElementById('page-admin');
+  if (!page) return;
+  const box = page.querySelector('#admin-stat-box');
   if (!box) return;
-  if (!_ris.classifiche) _ris.classifiche = {};
 
-  // Ordina ogni classifica per valore decrescente (righe senza valore in fondo).
-  CLASSIFICHE.forEach(c => {
-    if (Array.isArray(_ris.classifiche[c.id])) {
-      _ris.classifiche[c.id].sort((a, b) => {
-        const av = a && a.v != null ? a.v : -Infinity;
-        const bv = b && b.v != null ? b.v : -Infinity;
-        return bv - av;
-      });
-    }
+  // Allinea le sotto-schede allo stato corrente
+  page.querySelectorAll('#stat-cat-tabs .tab').forEach(t =>
+    t.classList.toggle('active', t.dataset.scat === _statCat));
+  page.querySelectorAll('#stat-round-tabs .tab').forEach(t =>
+    t.classList.toggle('active', t.dataset.sround === _statRound));
+
+  const cat = CLASSIFICHE.find(c => c.id === _statCat) || CLASSIFICHE[0];
+  const turno = TURNI.find(t => t.id === _statRound);
+  const tutti = _giocatoriDelTurno(_statRound);
+
+  if (!tutti.length) {
+    box.innerHTML = `<p class="match-locked-msg">⚠️ Nessun giocatore per <strong>${turno?.nome || _statRound}</strong>: inserisci prima i risultati dei turni precedenti nella scheda <strong>Risultati</strong>.</p>`;
+    _renderStatProgress(0, 0);
+    _renderStatTop();
+    return;
+  }
+
+  const lista = _statFiltro
+    ? tutti.filter(pid => nomeGiocatore(_db, pid).toLowerCase().includes(_statFiltro))
+    : tutti;
+  const compilati = tutti.filter(pid => _statGet(_statCat, pid, _statRound) != null).length;
+
+  box.innerHTML = lista.length
+    ? lista.map(pid => {
+        const v = _statGet(_statCat, pid, _statRound);
+        return `<div class="stat-row${v != null ? ' stat-row--done' : ''}" data-pidrow="${pid}">
+          <span class="stat-name">${nomeGiocatore(_db, pid)}</span>
+          <input type="number" class="stat-val" data-pid="${pid}" min="0" step="1" inputmode="numeric"
+                 value="${v == null ? '' : v}" placeholder="—" aria-label="${cat.label} ${nomeGiocatore(_db, pid)}">
+          <span class="stat-tot" data-tot="${pid}">tot <strong>${_statTot(_statCat, pid)}</strong></span>
+        </div>`;
+      }).join('')
+    : '<p class="text-muted clf-edit-empty">Nessun giocatore corrisponde al filtro.</p>';
+
+  _renderStatProgress(compilati, tutti.length);
+
+  box.querySelectorAll('.stat-val').forEach(inp => {
+    inp.addEventListener('input', () => {
+      const pid = inp.dataset.pid;
+      const raw = inp.value.trim();
+      _statSet(_statCat, pid, _statRound, raw === '' ? null : Math.max(0, parseInt(raw, 10) || 0));
+      // Aggiorna totale e stato riga senza ridisegnare (non si perde il focus)
+      const tot = box.querySelector(`[data-tot="${pid}"] strong`);
+      if (tot) tot.textContent = _statTot(_statCat, pid);
+      inp.closest('.stat-row')?.classList.toggle('stat-row--done', raw !== '');
+      const fatti = _giocatoriDelTurno(_statRound)
+        .filter(p => _statGet(_statCat, p, _statRound) != null).length;
+      _renderStatProgress(fatti, tutti.length);
+      _renderStatTop();
+    });
   });
 
-  box.innerHTML = CLASSIFICHE.map(c => {
-    const rows = _ris.classifiche[c.id] || [];
-    const rowsHtml = rows.map((r, i) => `
-      <div class="clf-edit-row">
-        <span class="clf-edit-pos">${i + 1}</span>
-        <select class="bonus-select clf-edit-player" data-cat="${c.id}" data-idx="${i}">${_giocatoreOptions(r.pid || '')}</select>
-        <input type="number" class="clf-edit-val" data-cat="${c.id}" data-idx="${i}" min="0" step="1" value="${r.v == null ? '' : r.v}" placeholder="valore" aria-label="Valore">
-        <button type="button" class="clf-edit-btn clf-edit-del" data-clfdel="${c.id}" data-idx="${i}" title="Rimuovi">🗑</button>
-      </div>`).join('');
-    return `<div class="clf-edit-card">
-      <h4 class="clf-edit-title">${c.emoji} Classifica ${c.label}</h4>
-      <div class="clf-edit-rows">${rowsHtml || '<p class="text-muted clf-edit-empty">Nessuna riga. Aggiungi il primo giocatore.</p>'}</div>
-      <button type="button" class="btn btn-secondary clf-edit-add" data-clfadd="${c.id}">➕ Aggiungi giocatore</button>
+  _renderStatTop();
+  if (opts.keepFocus) page.querySelector('#stat-filtro')?.focus();
+}
+
+function _renderStatProgress(fatti, totale) {
+  const el = document.getElementById('stat-progress');
+  if (el) el.textContent = totale ? `${fatti}/${totale} compilati` : '—';
+}
+
+/** Anteprima live della Top 30 di ogni categoria (quella che finirà in pubblico). */
+function _renderStatTop() {
+  const box = document.getElementById('admin-stat-top');
+  if (!box) return;
+  const cards = CLASSIFICHE.map(c => {
+    const rows = _classificaDaStat(c.id);
+    const body = rows.length
+      ? `<ol class="clf-list">` + rows.map((r, i) =>
+          `<li class="clf-row${i < 3 ? ' clf-row--top clf-row--' + (i + 1) : ''}">
+             <span class="clf-pos">${i + 1}</span>
+             <span class="clf-name">${nomeGiocatore(_db, r.pid)}</span>
+             <span class="clf-val">${r.v}</span>
+           </li>`).join('') + '</ol>'
+      : '<p class="text-muted clf-edit-empty">Nessun dato inserito.</p>';
+    return `<div class="clf-card">
+      <h5 class="clf-title">${c.emoji} ${c.label} <span class="stat-top-badge">Top ${STAT_TOP}</span></h5>
+      ${body}
     </div>`;
   }).join('');
-
-  box.querySelectorAll('.clf-edit-player').forEach(s =>
-    s.addEventListener('change', () => { _clfEnsure(s.dataset.cat, +s.dataset.idx).pid = s.value || null; }));
-  box.querySelectorAll('.clf-edit-val').forEach(inp => {
-    // Aggiorna il modello mentre si digita (senza riordinare, per non perdere il focus)…
-    inp.addEventListener('input', () => {
-      const raw = inp.value.trim();
-      _clfEnsure(inp.dataset.cat, +inp.dataset.idx).v = raw === '' ? null : Math.max(0, parseInt(raw, 10) || 0);
-    });
-    // …e riordina automaticamente quando il campo perde il focus (o si preme Invio).
-    inp.addEventListener('change', () => _renderClassifiche());
-  });
-  box.querySelectorAll('[data-clfadd]').forEach(b =>
-    b.addEventListener('click', () => {
-      const cat = b.dataset.clfadd;
-      if (!Array.isArray(_ris.classifiche[cat])) _ris.classifiche[cat] = [];
-      _ris.classifiche[cat].push({ pid: null, v: null });
-      _renderClassifiche();
-    }));
-  box.querySelectorAll('[data-clfdel]').forEach(b =>
-    b.addEventListener('click', () => {
-      const cat = b.dataset.clfdel, i = +b.dataset.idx;
-      (_ris.classifiche[cat] || []).splice(i, 1);
-      _renderClassifiche();
-    }));
+  box.innerHTML = `<h4 class="clf-heading">🔮 Anteprima classifiche (si aggiorna mentre digiti)</h4>
+    <div class="clf-grid">${cards}</div>`;
 }
 
-async function _salvaClassifiche(btn) {
-  const msg = document.getElementById('rismsg-CLASSIFICHE');
+async function _salvaStatistiche(btn) {
+  const msg = document.getElementById('rismsg-STAT');
   btn.disabled = true; const old = btn.textContent; btn.textContent = '⏳ Salvataggio…';
   try {
-    // Ripulisci: scarta righe senza giocatore e normalizza i valori.
+    // Normalizza: interi ≥ 0, null per le caselle vuote. Scriviamo sempre tutti e
+    // 7 i turni perché il merge di Firestore non cancella i campi: senza il null
+    // esplicito un valore svuotato resterebbe nel documento.
     const clean = {};
     CLASSIFICHE.forEach(c => {
-      clean[c.id] = (_ris.classifiche[c.id] || [])
-        .filter(r => r && r.pid)
-        .map(r => ({ pid: r.pid, v: r.v == null ? null : Number(r.v) }));
+      const src = _ris.statistiche?.[c.id] || {};
+      const dst = {};
+      Object.keys(src).forEach(pid => {
+        const row = {};
+        let qualcosa = false;
+        TURNI.forEach(t => {
+          const v = src[pid]?.[t.id];
+          if (v == null || v === '') { row[t.id] = null; }
+          else { row[t.id] = Math.max(0, parseInt(v, 10) || 0); qualcosa = true; }
+        });
+        // Tieni la riga anche se vuota, così i null cancellano i vecchi valori
+        if (qualcosa || Object.keys(src[pid] || {}).length) dst[pid] = row;
+      });
+      clean[c.id] = dst;
     });
-    _ris.classifiche = clean;
-    await setRisultati({ classifiche: clean });
+    _ris.statistiche = clean;
+
+    // Le classifiche pubbliche sono derivate: Top 30 per valore decrescente.
+    const classifiche = {};
+    CLASSIFICHE.forEach(c => { classifiche[c.id] = _classificaDaStat(c.id); });
+    _ris.classifiche = classifiche;
+
+    await setRisultati({ statistiche: clean, classifiche });
     if (msg) { msg.textContent = '✅ Salvato'; msg.className = 'elim-save-msg ok'; }
-    showToast('Classifiche salvate', 'success');
-    _renderClassifiche();
+    showToast('Statistiche salvate. Classifiche aggiornate.', 'success');
+    _renderStat();
   } catch (err) {
     if (msg) { msg.textContent = '❌ Errore'; msg.className = 'elim-save-msg err'; }
     showToast('Errore: ' + err.message, 'error');
