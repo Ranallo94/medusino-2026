@@ -350,6 +350,8 @@ function _renderRisultatiRound(roundId, pron, risultati, db, userPicks) {
   if (!t) return;
   const up = userPicks[roundId] || {};
   const winPts = WINNER_POINTS[roundId], setPts = SET_POINTS[roundId];
+  // Slot con giocatore sostituito dopo la chiusura: non assegnano punti
+  const annullati = new Set((db?.sostituiti || []).map(x => (typeof x === 'string' ? x : x.pid)));
 
   let cards = '', nEsiti = 0, nSet = 0, pts = 0;
 
@@ -361,11 +363,14 @@ function _renderRisultatiRound(roundId, pron, risultati, db, userPicks) {
     if (!vinc) continue; // solo partite concluse
 
     const realSet = p.set || '';
-    const esitoOk = Object.prototype.hasOwnProperty.call(up, vinc);
+    const annullato = annullati.has(vinc);
+    const esitoOk = !annullato && Object.prototype.hasOwnProperty.call(up, vinc);
     const userSet = up[vinc];
     const setOk = esitoOk && userSet && realSet && userSet === realSet;
     if (esitoOk) { nEsiti++; pts += winPts; }
     if (setOk) { nSet++; pts += setPts; }
+    // Chi aveva scelto lo slot annullato: lo segnaliamo, ma zero punti
+    const sceltoAnnullato = annullato && Object.prototype.hasOwnProperty.call(up, vinc);
 
     const side = (pid, isWin) => {
       if (!pid) return `<div class="match-side"><span class="match-team match-team--ro match-team--empty">—</span></div>`;
@@ -377,7 +382,13 @@ function _renderRisultatiRound(roundId, pron, risultati, db, userPicks) {
     };
 
     let status;
-    if (esitoOk) {
+    if (annullato) {
+      const info = (db?.sostituiti || []).find(x => x && x.pid === vinc);
+      const uscito = info && info.uscito ? info.uscito : 'il giocatore sorteggiato';
+      status = sceltoAnnullato
+        ? `<span class="prof-pts prof-pts--annull">⊘ Annullata — avevi pronosticato ${uscito}, ritirato prima del torneo</span>`
+        : `<span class="prof-pts prof-pts--annull">⊘ Partita annullata (${uscito} ritirato)</span>`;
+    } else if (esitoOk) {
       status = `<span class="prof-pts prof-pts--ok">✓ Esito +${winPts}</span>` +
         (setOk
           ? `<span class="prof-pts prof-pts--set">🎾 Set esatto +${setPts}</span>`
